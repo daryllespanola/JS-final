@@ -1,0 +1,35 @@
+{
+    "project_type": "javascript",
+
+    "debugMode" : 1,
+    "showFPS" : true,
+    "frameRate" : 60,
+    "id" : "gameCanvas",
+    "renderMode" : 0,
+    "engineDir":"frameworks_min/cocos2d-js-v3.6",
+
+    "modules" : ["cocos2d"],
+
+    "jsList" : [
+        "src/Resources.js",
+        "src/Preloader.js",
+        "src/CNAPI.js",
+        "src/GameConfig.js",
+        "src/Tools.js",
+        "src/ControlEvents.js",
+        "src/MainMenuScene.js",
+        "src/HowToPlayScene.js",
+        "src/GameplayScene.js",
+        "src/GameOverScene.js",
+        "src/Heart.js",
+        "src/Player.js",
+        "src/Projectile.js",
+        "src/LevelSelectScene.js",
+        "src/Brick.js",
+        "src/SpecialObj.js",
+        "src/CustomButton.js",
+        "src/PickUp.js",
+        "src/FX.js",
+        "src/CustomCollider.js"
+    ]
+}

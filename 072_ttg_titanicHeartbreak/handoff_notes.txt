@@ -1,0 +1,7 @@
+Place notes here, specifically anything the client needs to know with the game.
+Some sample notes:
+
+- Game lags on iOS devices with ver 7.1 and below.
+- Graphics deteriorate on low-end devices.
+- No integration testing on CN Watch and Play app.
+- No music and SFX.
