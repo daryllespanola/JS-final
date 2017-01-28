@@ -167,25 +167,24 @@ var LevelSelectLayer = cc.Layer.extend({
 		level6.x = 345;
 		level6.y = -70;
 
+		var level7 = new cc.MenuItemImage(
+			"#ui_btn_lvl.png",
+			"#ui_btn_lvl.png",
+			this.startLevel7,
+			this);
+		
+		level7.anchorX = 1;
+		level7.anchorY = 1;
+		level7.x = 217;
+		level7.y = -70;
 
 
-		var levelMenu = new cc.Menu(level1, level2, level3, level4, level5, level6);
+
+		var levelMenu = new cc.Menu(level1, level2, level3, level4, level5, level6, level7);
 		levelMenu.x = GC.SCREEN.CENTER.X;
 		levelMenu.y = GC.SCREEN.CENTER.Y - 100;
 		this.addChild(levelMenu, 5);
 
-		//this.displayUnkownButton();
-	},
-
-	displayUnkownButton:function()
-	{
-		for(var i = 0; i < 12; i++)
-		{
-			cc.log("Sd");
-			this.m_charUnknownField = new LockLevelButton();
-			this.m_charUnknownField.setPosition(100 +  (100 * i), GC.SCREEN.CENTER.Y);
-			this.m_uiBatchNode.addChild(this.m_charUnknownField, 6);
-		}
 	},
 
 	processCharacterSelected:function()
@@ -347,9 +346,11 @@ var LevelSelectLayer = cc.Layer.extend({
 		this.showLoadingScreen();
 	},
 
-	goLevel7:function()
+	startLevel7:function()
 	{
-
+		GC.LEVEL = 7;
+		this.processCharacterSelected();
+		this.showLoadingScreen();
 	},
 
 	goLevel8:function()

@@ -1,30 +1,40 @@
-var Glass4 = cc.Sprite.extend({
+var Glass = cc.Sprite.extend({
 
 	act_destroy:undefined,
 	m_type:undefined,
+	m_bIsDestroy:undefined,
 
-	ctor:function()
+	ctor:function(p_size)
 	{
-		this._super("#gobj_Glass4_0.png");
+		var ID = "#gobj_Glass" + p_size + "_0.png";
+		this._super(ID);
 		this.m_type = "Special";
-		//this.drawCollider(true);
-		this.init();
+		this.init(p_size);
 	},
 
-	init:function()
+	init:function(p_size)
 	{
-		this.act_destroy = new Tools.createFramesAnimation("gobj_Glass4_", 0.03, 1, 6);
+		var size = p_size;
+
+		switch(size)
+		{
+			case 4: this.act_destroy = new Tools.createFramesAnimation("gobj_Glass4_", 0.03, 1, 6);
+				break;
+			case 3: this.act_destroy = new Tools.createFramesAnimation("gobj_Glass3_", 0.03, 1, 6);
+				break;
+			case 2: this.act_destroy = new Tools.createFramesAnimation("gobj_Glass2_", 0.03, 1, 6);
+				break;
+			case 1: this.act_destroy = new Tools.createFramesAnimation("gobj_Glass1_", 0.03, 1, 6);
+				break;
+		}
 	},
 
 	playFXAnim:function()
 	{
-		this.m_isDestroyed = true;
-	
+		this.m_bIsDestroy = true;
 		this.runAction(this.act_destroy);
-
 		this.runAction(cc.sequence(cc.delayTime(0.1),
 			cc.fadeOut(0.1)));
-		
 	},
 
 	collideRect:function(x, y)
@@ -32,7 +42,7 @@ var Glass4 = cc.Sprite.extend({
 		var w = this.getContentSize().width;
 		var h = this.getContentSize().height;
 
-		if(!this.m_isDestroyed)
+		if(!this.m_bIsDestroy)
 		{
 			return cc.rect(x - (w / 2), y - (h / 2), w, h);
 		}
@@ -40,124 +50,6 @@ var Glass4 = cc.Sprite.extend({
 		else return cc.rect(0, 0, 0, 0);
 	},
 
-	drawCollider:function(show) {
-		if (show) {
-			var collider = new cc.DrawNode();
-            var origin = cc.p(this.x, this.y);
-            cc.log(origin);
-            var destination = cc.p(this.getContentSize().width, this.getContentSize().height);
-            collider.drawRect(origin, destination, cc.color(0,0,0,100));
-            this.addChild(collider);
-		}
-	},
-});
-
-var Glass3 = cc.Sprite.extend({
-
-	act_destroy:undefined,
-	m_type:undefined,
-
-	ctor:function()
-	{
-		this._super("#gobj_Glass3_0.png");
-		this.m_type = "Special";
-		//this.drawCollider(true);
-		this.init();
-	},
-
-	init:function()
-	{
-		this.act_destroy = new Tools.createFramesAnimation("gobj_Glass3_", 0.03, 1, 6);
-	},
-
-	playFXAnim:function()
-	{
-		this.m_isDestroyed = true;
-	
-		this.runAction(this.act_destroy);
-
-		this.runAction(cc.sequence(cc.delayTime(0.1),
-			cc.fadeOut(0.1)));
-		
-	},
-
-	collideRect:function(x, y)
-	{
-		var w = this.getContentSize().width;
-		var h = this.getContentSize().height;
-
-		if(!this.m_isDestroyed)
-		{
-			return cc.rect(x - (w / 2), y - (h / 2), w, h);
-		}
-		
-		else return cc.rect(0, 0, 0, 0);
-	},
-
-	drawCollider:function(show) {
-		if (show) {
-			var collider = new cc.DrawNode();
-            var origin = cc.p(this.x, this.y);
-            cc.log(origin);
-            var destination = cc.p(this.getContentSize().width, this.getContentSize().height);
-            collider.drawRect(origin, destination, cc.color(0,0,0,100));
-            this.addChild(collider);
-		}
-	},
-});
-
-var Glass2 = cc.Sprite.extend({
-
-	act_destroy:undefined,
-	m_type:undefined,
-
-	ctor:function()
-	{
-		this._super("#gobj_Glass2_0.png");
-		this.m_type = "Special";
-		//this.drawCollider(true);
-		this.init();
-	},
-
-	init:function()
-	{
-		this.act_destroy = new Tools.createFramesAnimation("gobj_Glass2_", 0.03, 1, 6);
-	},
-
-	playFXAnim:function()
-	{
-		this.m_isDestroyed = true;
-	
-		this.runAction(this.act_destroy);
-
-		this.runAction(cc.sequence(cc.delayTime(0.1),
-			cc.fadeOut(0.1)));
-		
-	},
-
-	collideRect:function(x, y)
-	{
-		var w = this.getContentSize().width;
-		var h = this.getContentSize().height;
-
-		if(!this.m_isDestroyed)
-		{
-			return cc.rect(x - (w / 2), y - (h / 2), w, h);
-		}
-		
-		else return cc.rect(0, 0, 0, 0);
-	},
-
-	drawCollider:function(show) {
-		if (show) {
-			var collider = new cc.DrawNode();
-            var origin = cc.p(this.x, this.y);
-            cc.log(origin);
-            var destination = cc.p(this.getContentSize().width, this.getContentSize().height);
-            collider.drawRect(origin, destination, cc.color(0,0,0,100));
-            this.addChild(collider);
-		}
-	},
 });
 
 var PowerUp = cc.Sprite.extend({

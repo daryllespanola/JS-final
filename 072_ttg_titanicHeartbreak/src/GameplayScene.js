@@ -232,8 +232,9 @@ var GameplayLayer = cc.Layer.extend({
     },
 
     /// Add object functions
-    addBrick:function(x, y)
+    addBrick:function(p_texture, x, y)
     {
+        this.m_brick = new Brick(p_texture);
         this.m_brick.setPosition(x, y);
         this.m_brickBatchNode.addChild(this.m_brick, 3);
         this.m_bricksContainer.push(this.m_brick);
@@ -246,8 +247,9 @@ var GameplayLayer = cc.Layer.extend({
         this.m_bricksContainer.push(this.m_specialObj);
     },
 
-    addCustomCollision:function(x, y)
+    addCustomCollision:function(p_texture, x, y)
     {
+        this.m_brick = new CustomCollider(p_texture);
         this.m_brick.setOpacity(155);
         this.m_brick.setPosition(x, y);
         this.m_customColBatchNode.addChild(this.m_brick, 3);
@@ -281,41 +283,33 @@ var GameplayLayer = cc.Layer.extend({
             var leftL = new cc.Sprite("#gameScreen_lv1w4.png");
             leftL.setPosition(GC.SCREEN.CENTER.X - 316, GC.SCREEN.CENTER.Y + 110);
             this.m_brickBatchNode.addChild(leftL);
-            this.m_brick = new CustomCollider("#collider_lv1_w3_horz.png");
-            this.addCustomCollision(GC.SCREEN.CENTER.X - 316, GC.SCREEN.CENTER.Y + 76)
-            this.m_brick = new CustomCollider("#collider_lv1_w3_vert.png");
-            this.addCustomCollision(GC.SCREEN.CENTER.X - 331, GC.SCREEN.CENTER.Y + 125);
+            this.addCustomCollision("#collider_lv1_w3_horz.png", GC.SCREEN.CENTER.X - 316, GC.SCREEN.CENTER.Y + 76);
+            this.addCustomCollision("#collider_lv1_w3_vert.png", GC.SCREEN.CENTER.X - 331, GC.SCREEN.CENTER.Y + 125);
 
             //Right L Shape
             var rightL = new cc.Sprite("#gameScreen_lv1w3.png");
             rightL.setPosition(GC.SCREEN.CENTER.X + 322, GC.SCREEN.CENTER.Y + 110);
             this.m_brickBatchNode.addChild(rightL);
-            this.m_brick = new CustomCollider("#collider_lv1_w3_horz.png");
-            this.addCustomCollision(GC.SCREEN.CENTER.X + 322, GC.SCREEN.CENTER.Y + 76);
-            this.m_brick = new CustomCollider("#collider_lv1_w3_vert.png");
-            this.addCustomCollision(GC.SCREEN.CENTER.X + 337, GC.SCREEN.CENTER.Y + 125);
+            this.addCustomCollision("#collider_lv1_w3_horz.png", GC.SCREEN.CENTER.X + 322, GC.SCREEN.CENTER.Y + 76);
+            this.addCustomCollision("#collider_lv1_w3_vert.png", GC.SCREEN.CENTER.X + 337, GC.SCREEN.CENTER.Y + 125);
             ///
 
             ///Static Bricks
             for(var i = 0; i < 4; i++)
             {
-                this.m_brick = new Brick("#gameScreen_lv1w5.png");
-                this.addBrick(GC.SCREEN.CENTER.X + 366 - (i * 250), GC.SCREEN.CENTER.Y - 75);
+                this.addBrick("#gameScreen_lv1w5.png", GC.SCREEN.CENTER.X + 366 - (i * 250), GC.SCREEN.CENTER.Y - 75);
             }
                 
             for(var i = 0; i < 2; i++)
             {
-                this.m_brick = new Brick("#gameScreen_lv1w2.png");
-                this.addBrick(GC.SCREEN.CENTER.X - 107.5 + (i * 223), GC.SCREEN.CENTER.Y + 75);
-
-                this.m_brick = new Brick("#gameScreen_lv1w1.png");
-                this.addBrick(GC.SCREEN.CENTER.X - 331.5 + (i * 670), GC.SCREEN.CENTER.Y + 207);
+                this.addBrick("#gameScreen_lv1w2.png", GC.SCREEN.CENTER.X - 107.5 + (i * 223), GC.SCREEN.CENTER.Y + 75);
+                this.addBrick("#gameScreen_lv1w1.png", GC.SCREEN.CENTER.X - 331.5 + (i * 670), GC.SCREEN.CENTER.Y + 207);
             } 
                 
             ///Special Bricks
             for(var i = 0; i < 3; i++)
             {
-                this.m_specialObj = new Glass4();
+                this.m_specialObj = new Glass(4);
                 this.addSpecialObj(GC.SCREEN.CENTER.X - 220 + (i * 223), GC.SCREEN.CENTER.Y + 75);
             }
             
@@ -342,50 +336,31 @@ var GameplayLayer = cc.Layer.extend({
             ///Static Bricks
             for(var i = 0; i < 2; i++)
             {
-                this.m_brick = new Brick("#gameScreen_lv2w5.png");
-                this.addBrick(GC.SCREEN.CENTER.X - 270.5 + (i * 541), GC.SCREEN.CENTER.Y + 55);
-
-                this.m_brick = new Brick("#gameScreen_lv2w5.png");
-                this.addBrick(GC.SCREEN.CENTER.X - 450 + (i * 127), GC.SCREEN.CENTER.Y + 200);
-
-                this.m_brick = new Brick("#gameScreen_lv2w5.png");
-                this.addBrick(GC.SCREEN.CENTER.X + 450 - (i * 127), GC.SCREEN.CENTER.Y + 200);
+                this.addBrick("#gameScreen_lv2w5.png", GC.SCREEN.CENTER.X - 270.5 + (i * 541), GC.SCREEN.CENTER.Y + 55);
+                this.addBrick("#gameScreen_lv2w5.png", GC.SCREEN.CENTER.X - 450 + (i * 127), GC.SCREEN.CENTER.Y + 200);
+                this.addBrick("#gameScreen_lv2w5.png", GC.SCREEN.CENTER.X + 450 - (i * 127), GC.SCREEN.CENTER.Y + 200);
             }
-
-            this.m_brick = new Brick("#gameScreen_lv2w1.png");
-            this.addBrick(GC.SCREEN.CENTER.X - 95, GC.SCREEN.CENTER.Y + 120);
-
-            this.m_brick = new Brick("#gameScreen_lv2w2.png");
-            this.addBrick(GC.SCREEN.CENTER.X + 95, GC.SCREEN.CENTER.Y + 120);
-
-            this.m_brick = new Brick("#gameScreen_lv2w3.png");
-            this.addBrick(GC.SCREEN.CENTER.X - 95, GC.SCREEN.CENTER.Y - 5);
-
-            this.m_brick = new Brick("#gameScreen_lv2w4.png");
-            this.addBrick(GC.SCREEN.CENTER.X + 95, GC.SCREEN.CENTER.Y - 5);
+            this.addBrick("#gameScreen_lv2w1.png", GC.SCREEN.CENTER.X - 95, GC.SCREEN.CENTER.Y + 120);
+            this.addBrick("#gameScreen_lv2w2.png", GC.SCREEN.CENTER.X + 95, GC.SCREEN.CENTER.Y + 120);
+            this.addBrick("#gameScreen_lv2w3.png", GC.SCREEN.CENTER.X - 95, GC.SCREEN.CENTER.Y - 5);
+            this.addBrick("#gameScreen_lv2w4.png",GC.SCREEN.CENTER.X + 95, GC.SCREEN.CENTER.Y - 5);
 
             ///Special Objs
             for(var i = 0; i < 3; i++)
             {
-                this.m_specialObj = new Glass4();
+                this.m_specialObj = new Glass(4);
                 this.addSpecialObj(GC.SCREEN.CENTER.X - 190 + (i * 190), GC.SCREEN.CENTER.Y - 22);
-
-                this.m_specialObj = new Glass4();
+                this.m_specialObj = new Glass(4);
                 this.addSpecialObj(GC.SCREEN.CENTER.X - 190 + (i * 190), GC.SCREEN.CENTER.Y + 135);
-
-                this.m_specialObj = new Glass3();
+                this.m_specialObj = new Glass(3);
                 this.addSpecialObj(GC.SCREEN.CENTER.X - 386.5, GC.SCREEN.CENTER.Y + 130 - (i * 70));
-
-                this.m_specialObj = new Glass3();
+                this.m_specialObj = new Glass(3);
                 this.addSpecialObj(GC.SCREEN.CENTER.X + 386.5, GC.SCREEN.CENTER.Y + 130 - (i * 70));
             }
-
-            this.m_specialObj = new Glass3();
+            this.m_specialObj = new Glass(3);
             this.addSpecialObj(GC.SCREEN.CENTER.X - 386.5, GC.SCREEN.CENTER.Y + 274);
-
-            this.m_specialObj = new Glass3();
+            this.m_specialObj = new Glass(3);
             this.addSpecialObj(GC.SCREEN.CENTER.X + 386.5, GC.SCREEN.CENTER.Y + 274);
-
             this.m_specialObj = new PowerUp();
             this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 215);
         }
@@ -409,42 +384,30 @@ var GameplayLayer = cc.Layer.extend({
 
             for (var i = 0; i < 2; i++)
             {
-                this.m_brick = new CustomCollider("#collider_lv3_w1_horz1.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X - 370 + (i * 238), GC.SCREEN.CENTER.Y + 230);
-                this.m_brick = new CustomCollider("#collider_lv3_w1_horz1.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X - 370 + (i * 238), GC.SCREEN.CENTER.Y - 7);
-                this.m_brick = new CustomCollider("#collider_lv3_w1_vert.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X - 386 + (i * 270), GC.SCREEN.CENTER.Y + 111.5);
-                this.m_brick = new CustomCollider("#collider_lv3_w1_horz2.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X - 250.8, GC.SCREEN.CENTER.Y + 246 + (i * -270));
-
-                this.m_brick = new CustomCollider("#collider_lv3_w1_horz1.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X + 126 + (i * 238), GC.SCREEN.CENTER.Y + 230);
-                this.m_brick = new CustomCollider("#collider_lv3_w1_horz1.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X + 126 + (i * 238), GC.SCREEN.CENTER.Y - 7);
-                this.m_brick = new CustomCollider("#collider_lv3_w1_vert.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X + 110 + (i * 270), GC.SCREEN.CENTER.Y + 111.5);
-                this.m_brick = new CustomCollider("#collider_lv3_w1_horz2.png");
-                this.addCustomCollision(GC.SCREEN.CENTER.X + 245.3, GC.SCREEN.CENTER.Y + 246 + (i * -270));
+                this.addCustomCollision("#collider_lv3_w1_horz1.png", GC.SCREEN.CENTER.X - 370 + (i * 238), GC.SCREEN.CENTER.Y + 230);
+                this.addCustomCollision("#collider_lv3_w1_horz1.png", GC.SCREEN.CENTER.X - 370 + (i * 238), GC.SCREEN.CENTER.Y - 7);
+                this.addCustomCollision("#collider_lv3_w1_vert.png", GC.SCREEN.CENTER.X - 386 + (i * 270), GC.SCREEN.CENTER.Y + 111.5);
+                this.addCustomCollision("#collider_lv3_w1_horz2.png", GC.SCREEN.CENTER.X - 250.8, GC.SCREEN.CENTER.Y + 246 + (i * -270));
+                this.addCustomCollision("#collider_lv3_w1_horz1.png", GC.SCREEN.CENTER.X + 126 + (i * 238), GC.SCREEN.CENTER.Y + 230);
+                this.addCustomCollision("#collider_lv3_w1_horz1.png", GC.SCREEN.CENTER.X + 126 + (i * 238), GC.SCREEN.CENTER.Y - 7);
+                this.addCustomCollision("#collider_lv3_w1_vert.png", GC.SCREEN.CENTER.X + 110 + (i * 270), GC.SCREEN.CENTER.Y + 111.5);
+                this.addCustomCollision("#collider_lv3_w1_horz2.png", GC.SCREEN.CENTER.X + 245.3, GC.SCREEN.CENTER.Y + 246 + (i * -270));
             }
 
             ///Special Objs
             this.m_specialObj = new PowerUp();
             this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 260);
-
             this.m_specialObj = new Trigger("LeftBox");
             this.m_specialObj.setScale(1, -1);
             this.addSpecialObj(GC.SCREEN.CENTER.X - 50, GC.SCREEN.CENTER.Y + 230);
             this.m_specialObj = new Trigger("RightBox");
             this.m_specialObj.setScale(1, -1);
             this.addSpecialObj(GC.SCREEN.CENTER.X + 50, GC.SCREEN.CENTER.Y + 230);
-
-
             for(var i = 0; i < 2; i++)
             {
-                this.m_specialObj = new Glass3();
+                this.m_specialObj = new Glass(3);
                 this.addSpecialObj(GC.SCREEN.CENTER.X - 50, GC.SCREEN.CENTER.Y + 180 - (i * 140));
-                this.m_specialObj = new Glass3();
+                this.m_specialObj = new Glass(3);
                 this.addSpecialObj(GC.SCREEN.CENTER.X + 45, GC.SCREEN.CENTER.Y + 180 - (i * 140));
             }
         }
@@ -626,6 +589,11 @@ var GameplayLayer = cc.Layer.extend({
                 this.addSpecialObj(GC.SCREEN.CENTER.X - 300 + (i * 600), GC.SCREEN.CENTER.Y + 55);
             }
 
+        }
+
+        else if(currentLevel == 7)
+        {
+            levelBackground = new cc.Sprite(res.gameScreen_bg_png_2);
         }
 
 
