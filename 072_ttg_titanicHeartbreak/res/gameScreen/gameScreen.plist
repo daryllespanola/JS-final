@@ -7,7 +7,7 @@
 			<key>gameScreen_grayWall1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{916,817},{32,32}}</string>
+				<string>{{737,217},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -21,7 +21,7 @@
 			<key>gameScreen_grayWall2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{986,774},{32,32}}</string>
+				<string>{{737,179},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -35,7 +35,7 @@
 			<key>gameScreen_grayWall3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,251},{32,32}}</string>
+				<string>{{772,976},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -49,7 +49,7 @@
 			<key>gameScreen_grayWall4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{586,250},{97,32}}</string>
+				<string>{{349,977},{97,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -63,7 +63,7 @@
 			<key>gameScreen_grayWall5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,441},{32,67}}</string>
+				<string>{{704,106},{32,67}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -77,7 +77,7 @@
 			<key>gameScreen_grayWall6.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,590},{32,32}}</string>
+				<string>{{736,305},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -91,7 +91,7 @@
 			<key>gameScreen_grayWall7.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{850,432},{65,64}}</string>
+				<string>{{628,203},{65,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -102,234 +102,94 @@
 				<string>{65,64}</string>
 			</dict>
 
-			<key>gameScreen_lv11w1.png</key>
+			<key>gameScreen_lv10w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{845,770},{65,91}}</string>
+				<string>{{699,413},{33,162}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{65,91}}</string>
+				<string>{{0,0},{33,162}}</string>
 				<key>sourceSize</key>
-				<string>{65,91}</string>
+				<string>{33,162}</string>
+			</dict>
+
+			<key>gameScreen_lv11w1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,605},{226,160}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{226,160}}</string>
+				<key>sourceSize</key>
+				<string>{226,160}</string>
 			</dict>
 
 			<key>gameScreen_lv11w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{831,0},{65,91}}</string>
+				<string>{{232,605},{225,161}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{65,91}}</string>
+				<string>{{0,0},{225,161}}</string>
 				<key>sourceSize</key>
-				<string>{65,91}</string>
+				<string>{225,161}</string>
 			</dict>
 
 			<key>gameScreen_lv11w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1029,614},{32,64}}</string>
+				<string>{{0,771},{226,160}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{32,64}}</string>
+				<string>{{0,0},{226,160}}</string>
 				<key>sourceSize</key>
-				<string>{32,64}</string>
+				<string>{226,160}</string>
 			</dict>
 
 			<key>gameScreen_lv11w4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1046,812},{32,86}}</string>
+				<string>{{232,772},{225,161}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{32,86}}</string>
+				<string>{{0,0},{225,161}}</string>
 				<key>sourceSize</key>
-				<string>{32,86}</string>
+				<string>{225,161}</string>
 			</dict>
 
 			<key>gameScreen_lv11w5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{436,853},{183,154}}</string>
+				<string>{{737,581},{32,97}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{183,154}}</string>
+				<string>{{0,0},{32,97}}</string>
 				<key>sourceSize</key>
-				<string>{183,154}</string>
+				<string>{32,97}</string>
 			</dict>
 
 			<key>gameScreen_lv11w6.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1067,0},{32,152}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{32,152}}</string>
-				<key>sourceSize</key>
-				<string>{32,152}</string>
-			</dict>
-
-			<key>gameScreen_lv12w1.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{921,352},{64,346}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{64,346}}</string>
-				<key>sourceSize</key>
-				<string>{64,346}</string>
-			</dict>
-
-			<key>gameScreen_lv12w2.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{921,0},{64,346}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{64,346}}</string>
-				<key>sourceSize</key>
-				<string>{64,346}</string>
-			</dict>
-
-			<key>gameScreen_lv12w3.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{742,420},{102,344}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{102,344}}</string>
-				<key>sourceSize</key>
-				<string>{102,344}</string>
-			</dict>
-
-			<key>gameScreen_lv12w4.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{634,530},{102,344}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{102,344}}</string>
-				<key>sourceSize</key>
-				<string>{102,344}</string>
-			</dict>
-
-			<key>gameScreen_lv12w5.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{586,0},{136,100}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{136,100}}</string>
-				<key>sourceSize</key>
-				<string>{136,100}</string>
-			</dict>
-
-			<key>gameScreen_lv12w6.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{831,983},{64,32}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{64,32}}</string>
-				<key>sourceSize</key>
-				<string>{64,32}</string>
-			</dict>
-
-			<key>gameScreen_lv13w1.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{218,853},{212,151}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{212,151}}</string>
-				<key>sourceSize</key>
-				<string>{212,151}</string>
-			</dict>
-
-			<key>gameScreen_lv13w2.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{368,0},{212,151}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{212,151}}</string>
-				<key>sourceSize</key>
-				<string>{212,151}</string>
-			</dict>
-
-			<key>gameScreen_lv13w3.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{0,853},{212,151}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{212,151}}</string>
-				<key>sourceSize</key>
-				<string>{212,151}</string>
-			</dict>
-
-			<key>gameScreen_lv13w4.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{368,157},{212,151}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{212,151}}</string>
-				<key>sourceSize</key>
-				<string>{212,151}</string>
-			</dict>
-
-			<key>gameScreen_lv13w5.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{796,144},{94,91}}</string>
+				<string>{{604,106},{94,91}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -343,7 +203,7 @@
 			<key>gameScreen_lv1w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1029,140},{32,96}}</string>
+				<string>{{699,203},{32,96}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -357,7 +217,7 @@
 			<key>gameScreen_lv1w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{760,288},{96,32}}</string>
+				<string>{{452,947},{96,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -371,7 +231,7 @@
 			<key>gameScreen_lv1w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{916,712},{64,99}}</string>
+				<string>{{629,563},{64,99}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -385,7 +245,7 @@
 			<key>gameScreen_lv1w4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{906,867},{64,99}}</string>
+				<string>{{629,668},{64,99}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -399,7 +259,7 @@
 			<key>gameScreen_lv1w5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,70},{64,64}}</string>
+				<string>{{673,843},{64,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -413,7 +273,7 @@
 			<key>gameScreen_lv2w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,0},{64,64}}</string>
+				<string>{{681,343},{64,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -427,7 +287,7 @@
 			<key>gameScreen_lv2w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{976,817},{64,64}}</string>
+				<string>{{628,273},{64,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -441,7 +301,7 @@
 			<key>gameScreen_lv2w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{976,887},{64,64}}</string>
+				<string>{{673,773},{64,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -455,7 +315,7 @@
 			<key>gameScreen_lv2w4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{986,704},{64,64}}</string>
+				<string>{{629,493},{64,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -469,7 +329,7 @@
 			<key>gameScreen_lv2w5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1029,315},{32,179}}</string>
+				<string>{{699,581},{32,179}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -483,7 +343,7 @@
 			<key>gameScreen_lv3w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{325,544},{303,303}}</string>
+				<string>{{0,296},{303,303}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -497,7 +357,7 @@
 			<key>gameScreen_lv4w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{368,500},{142,32}}</string>
+				<string>{{309,509},{142,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -511,7 +371,7 @@
 			<key>gameScreen_lv4w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{368,424},{176,32}}</string>
+				<string>{{0,975},{176,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -525,7 +385,7 @@
 			<key>gameScreen_lv5w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{792,247},{65,32}}</string>
+				<string>{{452,985},{65,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -539,7 +399,7 @@
 			<key>gameScreen_lv5w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{586,106},{128,32}}</string>
+				<string>{{309,547},{128,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -553,7 +413,7 @@
 			<key>gameScreen_lv5w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{368,462},{161,32}}</string>
+				<string>{{182,975},{161,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -567,7 +427,7 @@
 			<key>gameScreen_lv6w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{742,770},{97,97}}</string>
+				<string>{{525,250},{97,97}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -581,7 +441,7 @@
 			<key>gameScreen_lv6w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{732,880},{97,97}}</string>
+				<string>{{507,406},{97,97}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -595,7 +455,7 @@
 			<key>gameScreen_lv6w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{728,0},{97,97}}</string>
+				<string>{{501,106},{97,97}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -609,7 +469,7 @@
 			<key>gameScreen_lv6w4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{693,144},{97,97}}</string>
+				<string>{{570,841},{97,97}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -623,7 +483,7 @@
 			<key>gameScreen_lv7w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,692},{319,68}}</string>
+				<string>{{0,0},{319,68}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -637,7 +497,7 @@
 			<key>gameScreen_lv7w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,544},{319,68}}</string>
+				<string>{{0,74},{319,68}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -651,7 +511,7 @@
 			<key>gameScreen_lv7w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,766},{319,68}}</string>
+				<string>{{0,222},{319,68}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -665,7 +525,7 @@
 			<key>gameScreen_lv7w4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,618},{319,68}}</string>
+				<string>{{0,148},{319,68}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -679,7 +539,7 @@
 			<key>gameScreen_lv7w5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{368,314},{210,104}}</string>
+				<string>{{309,296},{210,104}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -693,7 +553,7 @@
 			<key>gameScreen_lv8w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{586,144},{101,100}}</string>
+				<string>{{463,841},{101,100}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -707,7 +567,7 @@
 			<key>gameScreen_lv8w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{625,880},{101,100}}</string>
+				<string>{{501,0},{101,100}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -721,7 +581,7 @@
 			<key>gameScreen_lv8w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{850,326},{65,100}}</string>
+				<string>{{679,0},{65,100}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -735,7 +595,7 @@
 			<key>gameScreen_lv8w4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{835,873},{65,100}}</string>
+				<string>{{608,0},{65,100}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -749,7 +609,7 @@
 			<key>gameScreen_lv8w5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{550,424},{170,100}}</string>
+				<string>{{325,0},{170,100}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -763,7 +623,7 @@
 			<key>gameScreen_lv8w6.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{584,314},{170,100}}</string>
+				<string>{{325,106},{170,100}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -777,7 +637,7 @@
 			<key>gameScreen_lv8w7.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{901,979},{64,32}}</string>
+				<string>{{525,353},{64,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -791,77 +651,105 @@
 			<key>gameScreen_lv9w1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,0},{362,130}}</string>
+				<string>{{309,406},{192,97}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{362,130}}</string>
+				<string>{{0,0},{192,97}}</string>
 				<key>sourceSize</key>
-				<string>{362,130}</string>
+				<string>{192,97}</string>
 			</dict>
 
 			<key>gameScreen_lv9w2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,408},{362,130}}</string>
+				<string>{{463,675},{160,160}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{362,130}}</string>
+				<string>{{0,0},{160,160}}</string>
 				<key>sourceSize</key>
-				<string>{362,130}</string>
+				<string>{160,160}</string>
 			</dict>
 
 			<key>gameScreen_lv9w3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,272},{362,130}}</string>
+				<string>{{463,509},{160,160}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{362,130}}</string>
+				<string>{{0,0},{160,160}}</string>
 				<key>sourceSize</key>
-				<string>{362,130}</string>
+				<string>{160,160}</string>
 			</dict>
 
 			<key>gameScreen_lv9w4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{0,136},{362,130}}</string>
+				<string>{{0,937},{194,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{362,130}}</string>
+				<string>{{0,0},{194,32}}</string>
 				<key>sourceSize</key>
-				<string>{362,130}</string>
+				<string>{194,32}</string>
 			</dict>
 
 			<key>gameScreen_lv9w5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{823,103},{64,32}}</string>
+				<string>{{428,250},{65,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
 				<false/>
 				<key>sourceColorRect</key>
-				<string>{{0,0},{64,32}}</string>
+				<string>{{0,0},{65,32}}</string>
 				<key>sourceSize</key>
-				<string>{64,32}</string>
+				<string>{65,32}</string>
+			</dict>
+
+			<key>gameScreen_lv9w6.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{775,144},{32,193}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{32,193}}</string>
+				<key>sourceSize</key>
+				<string>{32,193}</string>
+			</dict>
+
+			<key>gameScreen_lv9w7.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{743,760},{32,96}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{32,96}}</string>
+				<key>sourceSize</key>
+				<string>{32,96}</string>
 			</dict>
 
 			<key>gameScreen_orangeWall1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1029,576},{32,32}}</string>
+				<string>{{772,938},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -875,7 +763,7 @@
 			<key>gameScreen_orangeWall2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1029,538},{32,32}}</string>
+				<string>{{698,305},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -889,7 +777,7 @@
 			<key>gameScreen_orangeWall3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1029,500},{32,32}}</string>
+				<string>{{737,722},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -903,7 +791,7 @@
 			<key>gameScreen_orangeWall4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{689,250},{97,32}}</string>
+				<string>{{325,250},{97,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -917,7 +805,7 @@
 			<key>gameScreen_orangeWall5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1029,242},{32,67}}</string>
+				<string>{{734,913},{32,67}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -931,7 +819,7 @@
 			<key>gameScreen_orangeWall6.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1024,774},{32,32}}</string>
+				<string>{{696,913},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -945,7 +833,7 @@
 			<key>gameScreen_orangeWall7.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{850,572},{65,64}}</string>
+				<string>{{610,353},{65,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -959,7 +847,7 @@
 			<key>gameScreen_pinkWall1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1009,957},{32,32}}</string>
+				<string>{{734,986},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -973,7 +861,7 @@
 			<key>gameScreen_pinkWall2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,666},{32,32}}</string>
+				<string>{{569,209},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -987,7 +875,7 @@
 			<key>gameScreen_pinkWall3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,628},{32,32}}</string>
+				<string>{{629,773},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1001,7 +889,7 @@
 			<key>gameScreen_pinkWall4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{720,106},{97,32}}</string>
+				<string>{{325,212},{97,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1015,7 +903,7 @@
 			<key>gameScreen_pinkWall5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{1047,904},{32,67}}</string>
+				<string>{{696,951},{32,67}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1029,7 +917,7 @@
 			<key>gameScreen_pinkWall6.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,514},{32,32}}</string>
+				<string>{{531,209},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1043,7 +931,7 @@
 			<key>gameScreen_pinkWall7.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{850,642},{65,64}}</string>
+				<string>{{625,944},{65,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1057,7 +945,7 @@
 			<key>gameScreen_pinkWall8.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,70},{64,64}}</string>
+				<string>{{673,843},{64,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1071,7 +959,7 @@
 			<key>gameScreen_pinkWallB1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,365},{32,32}}</string>
+				<string>{{772,900},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1085,7 +973,7 @@
 			<key>gameScreen_pinkWallB2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,327},{32,32}}</string>
+				<string>{{751,343},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1099,7 +987,7 @@
 			<key>gameScreen_pinkWallB3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,289},{32,32}}</string>
+				<string>{{743,862},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1113,7 +1001,7 @@
 			<key>gameScreen_pinkWallB4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{728,986},{97,32}}</string>
+				<string>{{349,939},{97,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1127,7 +1015,7 @@
 			<key>gameScreen_pinkWallB5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,178},{32,67}}</string>
+				<string>{{750,0},{32,67}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1141,7 +1029,7 @@
 			<key>gameScreen_pinkWallB6.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,403},{32,32}}</string>
+				<string>{{742,106},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1155,7 +1043,7 @@
 			<key>gameScreen_pinkWallB7.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{850,502},{65,64}}</string>
+				<string>{{610,423},{65,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1169,7 +1057,7 @@
 			<key>gameScreen_whiteWall1.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{971,972},{32,32}}</string>
+				<string>{{738,524},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1183,7 +1071,7 @@
 			<key>gameScreen_whiteWall2.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,140},{32,32}}</string>
+				<string>{{738,486},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1197,7 +1085,7 @@
 			<key>gameScreen_whiteWall3.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{850,712},{32,32}}</string>
+				<string>{{737,255},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1211,7 +1099,7 @@
 			<key>gameScreen_whiteWall4.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{625,986},{97,32}}</string>
+				<string>{{428,212},{97,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1225,7 +1113,7 @@
 			<key>gameScreen_whiteWall5.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{863,241},{32,67}}</string>
+				<string>{{738,413},{32,67}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1239,7 +1127,7 @@
 			<key>gameScreen_whiteWall6.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{991,552},{32,32}}</string>
+				<string>{{737,684},{32,32}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1253,7 +1141,7 @@
 			<key>gameScreen_whiteWall7.png</key>
 			<dict>
 				<key>frame</key>
-				<string>{{760,326},{65,64}}</string>
+				<string>{{554,947},{65,64}}</string>
 				<key>offset</key>
 				<string>{0,0}</string>
 				<key>rotated</key>
@@ -1271,7 +1159,7 @@
 			<key>format</key>
 			<integer>2</integer>
 			<key>size</key>
-			<string>{2048,1024}</string>
+			<string>{1024,1024}</string>
 			<key>textureFileName</key>
 			<string>gameScreen.png</string>
 			</dict>

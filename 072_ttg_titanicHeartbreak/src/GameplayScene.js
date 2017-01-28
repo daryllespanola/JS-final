@@ -419,11 +419,8 @@ var GameplayLayer = cc.Layer.extend({
             ///Static Bricks
             for(var i = 0; i < 2; i++)
             {
-                this.m_brick = new Brick("#gameScreen_lv4w1.png");
-                this.addBrick(245 + (i * 877), GC.SCREEN.CENTER.Y - 50);
-
-                this.m_brick = new Brick("#gameScreen_lv4w2.png");
-                this.addBrick(531.5 + (i * 303.5), GC.SCREEN.CENTER.Y - 50);
+                this.addBrick("#gameScreen_lv4w1.png", 245 + (i * 877), GC.SCREEN.CENTER.Y - 50);
+                this.addBrick("#gameScreen_lv4w2.png", 531.5 + (i * 303.5), GC.SCREEN.CENTER.Y - 50);
             }
 
             ///Fans
@@ -448,10 +445,9 @@ var GameplayLayer = cc.Layer.extend({
             ///Special Obj
             for(var i = 0; i < 3; i++)
             {
-                this.m_specialObj = new Glass4();
+                this.m_specialObj = new Glass(4);
                 this.addSpecialObj(380 + (i * 303), GC.SCREEN.CENTER.Y - 50);
             }
-
             this.m_specialObj = new PowerUp();
             this.addSpecialObj(380, GC.SCREEN.CENTER.Y + 70);
             this.m_specialObj = new PowerUp();
@@ -500,7 +496,6 @@ var GameplayLayer = cc.Layer.extend({
             this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
             this.m_bricksContainer.push(this.m_specialObj);
 
-
             for(var i = 0; i < 2; i++)
             {
                 var bulb = new cc.Sprite("#gobj_lightbulb.png");
@@ -517,26 +512,22 @@ var GameplayLayer = cc.Layer.extend({
                 this.m_bricksContainer.push(this.m_specialObj);
             }
 
-
             //Static Bricks
             for(var i = 0; i < 2; i++)
             {
-                this.m_brick = new Brick("#gameScreen_lv5w3.png");
-                this.addBrick((GC.SCREEN.CENTER.X - 113) + (i * 225.5), GC.SCREEN.CENTER.Y + 80);
-                this.m_brick = new Brick("#gameScreen_lv5w2.png");
-                this.addBrick((GC.SCREEN.CENTER.X - 319.5) + (i * 638.5), GC.SCREEN.CENTER.Y + 80);
+                this.addBrick("#gameScreen_lv5w3.png", (GC.SCREEN.CENTER.X - 113) + (i * 225.5), GC.SCREEN.CENTER.Y + 80);
+                this.addBrick("#gameScreen_lv5w2.png", (GC.SCREEN.CENTER.X - 319.5) + (i * 638.5), GC.SCREEN.CENTER.Y + 80);
             }
 
             for(var i = 0; i < 4; i++)
             {
-                this.m_brick = new Brick("#gameScreen_lv5w1.png");
-                this.addBrick((GC.SCREEN.CENTER.X - 390) + (i * 260.5), GC.SCREEN.CENTER.Y - 80);
+                this.addBrick("#gameScreen_lv5w1.png", (GC.SCREEN.CENTER.X - 390) + (i * 260.5), GC.SCREEN.CENTER.Y - 80);
             }
 
             //Special Obj
             for(var i = 0; i < 3; i++)
             {
-                this.m_specialObj = new Glass2();
+                this.m_specialObj = new Glass(2);
                 this.addSpecialObj((GC.SCREEN.CENTER.X - 223.5) + (i * 223.5), GC.SCREEN.CENTER.Y + 80);
             }
 
@@ -558,7 +549,6 @@ var GameplayLayer = cc.Layer.extend({
             var rightTop = new cc.Sprite("#gameScreen_lv6w2.png");
             rightTop.setPosition(GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y + 163);
             this.m_brickBatchNode.addChild(rightTop);
-
             var leftBot = new cc.Sprite("#gameScreen_lv6w3.png");
             leftBot.setPosition(GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y - 48);
             this.m_brickBatchNode.addChild(leftBot);
@@ -569,17 +559,10 @@ var GameplayLayer = cc.Layer.extend({
             ///Static Bricks
             for (var i = 0; i < 2; i++)
             {
-                this.m_brick = new Brick("#gameScreen_pinkWall1.png");
-                this.addBrick((GC.SCREEN.CENTER.X - 145) + (i * 290.5), GC.SCREEN.CENTER.Y + 99);
-
-                this.m_brick = new Brick("#gameScreen_pinkWall1.png");
-                this.addBrick((GC.SCREEN.CENTER.X - 145) + (i * 290.5), GC.SCREEN.CENTER.Y + 15);
-
-                this.m_brick = new Brick("#gameScreen_pinkWall1.png");
-                this.addBrick((GC.SCREEN.CENTER.X - 49) + (i * 99), GC.SCREEN.CENTER.Y + 195);
-
-                this.m_brick = new Brick("#gameScreen_pinkWall1.png");
-                this.addBrick((GC.SCREEN.CENTER.X - 49) + (i * 99), GC.SCREEN.CENTER.Y - 80);
+                this.addBrick("#gameScreen_pinkWall1.png", (GC.SCREEN.CENTER.X - 145) + (i * 290.5), GC.SCREEN.CENTER.Y + 99);
+                this.addBrick("#gameScreen_pinkWall1.png", (GC.SCREEN.CENTER.X - 145) + (i * 290.5), GC.SCREEN.CENTER.Y + 15);
+                this.addBrick("#gameScreen_pinkWall1.png", (GC.SCREEN.CENTER.X - 49) + (i * 99), GC.SCREEN.CENTER.Y + 195);
+                this.addBrick("#gameScreen_pinkWall1.png", (GC.SCREEN.CENTER.X - 49) + (i * 99), GC.SCREEN.CENTER.Y - 80);
             }
 
             ///Special Objs
@@ -594,6 +577,30 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 7)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_2);
+
+            //Custom Collisions
+            var leftTop = new cc.Sprite("#gameScreen_lv7w1.png");
+            leftTop.setPosition(GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y + 163);
+            this.m_brickBatchNode.addChild(leftTop);
+            var leftBot = new cc.Sprite("#gameScreen_lv7w2.png");
+            leftBot.setPosition(GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y);
+            this.m_brickBatchNode.addChild(leftBot);
+            var rightTop = new cc.Sprite("#gameScreen_lv7w3.png");
+            rightTop.setPosition(GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y + 163);
+            this.m_brickBatchNode.addChild(rightTop);
+            var rightBot = new cc.Sprite("#gameScreen_lv7w4.png");
+            rightBot.setPosition(GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y);
+            this.m_brickBatchNode.addChild(rightBot);
+            var mid = new cc.Sprite("#gameScreen_lv7w5.png");
+            mid.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 200);
+            this.m_brickBatchNode.addChild(mid);
+
+            //Static Bricks
+            for(var i = 0; i < 2; i++)
+            {
+                this.addBrick("#gameScreen_pinkWallB1.png", GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y + 163 + (i * 30));
+                this.addBrick("#gameScreen_pinkWallB1.png", GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y + 163 + (i * 30));
+            }
         }
 
 
