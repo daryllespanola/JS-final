@@ -396,15 +396,24 @@ var Trigger = cc.Sprite.extend({
 	m_currentFunc:undefined,
 	m_bisOn:undefined,
 	m_type:undefined,
+	m_timer:undefined,
+	m_timeInterval:undefined,
 
 	ctor:function(defineFunc)
 	{
 		this._super("#gobj_trigger_0.png");
 		this.m_type = "Special";
-		this.m_bisOn = false;
 		this.m_currentFunc = defineFunc;
+		this.init();
+	},
+
+	init:function()
+	{
+		this.m_bisOn = false;
+		this.m_timer = 0;
+		this.m_timeInterval = 5;
+		this.scheduleUpdate();
 		cc.log(this.m_currentFunc);
-		//this.drawCollider(true);
 	},
 
 	playFXAnim:function()
@@ -422,6 +431,30 @@ var Trigger = cc.Sprite.extend({
 			Tools.changeSprite(this, "gobj_trigger_1.png");
 			cc.log("Left Hit");
 		}
+
+		else if(this.m_currentFunc == "OpenLeft" && !this.m_bisOn)
+		{
+			this.m_bisOn = true;
+			Tools.changeSprite(this, "gobj_trigger_1.png");
+			cc.log("Open Left Door");
+			g_sharedGameplayLyr.processMetalDoor("OpenLeft");
+		}
+
+		else if(this.m_currentFunc == "OpenRight" && !this.m_bisOn)
+		{
+			this.m_bisOn = true;
+			Tools.changeSprite(this, "gobj_trigger_1.png");
+			cc.log("Open Right Door");
+			g_sharedGameplayLyr.processMetalDoor("OpenRight");
+		}
+
+		else if(this.m_currentFunc == "OpenMid" && !this.m_bisOn)
+		{
+			this.m_bisOn = true;
+			Tools.changeSprite(this, "gobj_trigger_1.png");
+			cc.log("Open Mid Door");
+			g_sharedGameplayLyr.processMetalDoor("OpenMid");
+		}
 	},
 
 	collideRect:function(x, y)
@@ -432,16 +465,106 @@ var Trigger = cc.Sprite.extend({
 		return cc.rect(x - (w / 2), y - (h / 2), w, h);
 	},
 
-	drawCollider:function(show) {
-		if (show) {
-			var collider = new cc.DrawNode();
-            var origin = cc.p(this.x, this.y);
-            cc.log(origin);
-            var destination = cc.p(this.getContentSize().width, this.getContentSize().height);
-            collider.drawRect(origin, destination, cc.color(0,0,0,100));
-            this.addChild(collider);
+	update:function(dt)
+	{
+		if(this.m_bisOn)
+		{
+			if(this.m_timer < this.m_timeInterval)
+			{
+				this.m_timer += dt;
+
+				if(this.m_timer >= this.m_timeInterval)
+				{
+					this.m_timer = 0;
+					this.m_bisOn = false;
+					Tools.changeSprite(this, "gobj_trigger_0.png");
+				}
+			}
+		}	
+	}
+	
+
+
+});
+
+var MetalDoor = cc.Sprite.extend({
+
+	m_tag:undefined,
+	m_bIsOpen:undefined,
+	act_open:undefined,
+	act_close:undefined,
+	m_timer:undefined,
+	m_timeInterval:undefined,
+
+	ctor:function(p_tag)
+	{
+		this._super("#gobj_barrier_0.png");
+		this.init(p_tag);
+	},
+
+	init:function(p_tag)
+	{
+		this.m_tag = p_tag;
+		this.m_bIsOpen = false;
+		this.m_timer = 0;
+		this.m_timeInterval = 5;
+		this.act_open = new Tools.createFramesAnimation("gobj_barrier_", 0.01, 1, 2);
+		this.act_close = new Tools.createFramesAnimation("gobj_barrier_", 0.01, 2, 0);
+		this.scheduleUpdate();
+	},
+
+	openDoor:function()
+	{
+		if(!this.m_bIsOpen)
+		{
+			this.runAction(this.act_open);
+			this.runAction(cc.sequence(cc.delayTime(0.02), 
+			cc.callFunc(function()
+			{
+				this.setOpacity(0);
+			}, this)));
+
+			this.m_bIsOpen = true;
 		}
 	},
+
+	closeDoor:function()
+	{
+		if(this.m_bIsOpen)
+		{
+			this.setOpacity(255);
+			this.runAction(this.act_close);
+			this.m_bIsOpen = false;
+		}
+	},
+
+	collideRect:function(x, y)
+	{
+		var w = this.getContentSize().width;
+		var h = this.getContentSize().height;
+
+		//return cc.rect(x - (w / 2), y - (h / 2), w, h);
+		return cc.rect(x - (w / 2), y - (h / 2), 0, 0);
+	},
+
+	update:function(dt)
+	{
+		if(this.m_bIsOpen)
+		{
+			if(this.m_timer < this.m_timeInterval)
+			{
+				this.m_timer += dt;
+
+				if(this.m_timer >= this.m_timeInterval)
+				{
+					this.m_timer = 0;
+					this.closeDoor();
+				}
+			}
+		}
+	}
+
+
 
 });
 

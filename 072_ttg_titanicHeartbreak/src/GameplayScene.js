@@ -18,6 +18,7 @@ var GameplayLayer = cc.Layer.extend({
     //LevelDesign
     m_brick:undefined,
     m_bricksContainer:[],
+    m_metalDoorContainer:[],
     m_specialObj:undefined,
 
     //FX
@@ -75,6 +76,7 @@ var GameplayLayer = cc.Layer.extend({
         this.m_weaponPool = [];
         this.m_bricksContainer = [];
         this.m_heartContainer = [];
+        this.m_metalDoorContainer = [];
         this.m_toDelete = [];
         this.m_toDeletePickUp = [];
         this.m_pickUpContainer = [];
@@ -403,6 +405,7 @@ var GameplayLayer = cc.Layer.extend({
             this.m_specialObj = new Trigger("RightBox");
             this.m_specialObj.setScale(1, -1);
             this.addSpecialObj(GC.SCREEN.CENTER.X + 50, GC.SCREEN.CENTER.Y + 230);
+
             for(var i = 0; i < 2; i++)
             {
                 this.m_specialObj = new Glass(3);
@@ -580,27 +583,87 @@ var GameplayLayer = cc.Layer.extend({
 
             //Custom Collisions
             var leftTop = new cc.Sprite("#gameScreen_lv7w1.png");
-            leftTop.setPosition(GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y + 163);
+            leftTop.setPosition(300 , GC.SCREEN.CENTER.Y + 200);
             this.m_brickBatchNode.addChild(leftTop);
             var leftBot = new cc.Sprite("#gameScreen_lv7w2.png");
-            leftBot.setPosition(GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y);
+            leftBot.setPosition(300 , GC.SCREEN.CENTER.Y + 70);
             this.m_brickBatchNode.addChild(leftBot);
             var rightTop = new cc.Sprite("#gameScreen_lv7w3.png");
-            rightTop.setPosition(GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y + 163);
+            rightTop.setPosition(GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y + 200);
             this.m_brickBatchNode.addChild(rightTop);
             var rightBot = new cc.Sprite("#gameScreen_lv7w4.png");
-            rightBot.setPosition(GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y);
+            rightBot.setPosition(GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y + 70);
             this.m_brickBatchNode.addChild(rightBot);
             var mid = new cc.Sprite("#gameScreen_lv7w5.png");
-            mid.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 200);
+            mid.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 270);
             this.m_brickBatchNode.addChild(mid);
 
             //Static Bricks
             for(var i = 0; i < 2; i++)
             {
-                this.addBrick("#gameScreen_pinkWallB1.png", GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y + 163 + (i * 30));
-                this.addBrick("#gameScreen_pinkWallB1.png", GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y + 163 + (i * 30));
+                this.addBrick("#gameScreen_pinkWallB1.png", 156, GC.SCREEN.CENTER.Y + 120 + (i * 30));
+                this.addBrick("#gameScreen_pinkWallB1.png", GC.SCREEN.SIZE.WIDTH - 156, GC.SCREEN.CENTER.Y + 120 + (i * 30));
+                this.addBrick("#gameScreen_pinkWallB1.png", (GC.SCREEN.CENTER.X - 88) + (i * 177), GC.SCREEN.CENTER.Y - 59);
+                this.addBrick("#gameScreen_pinkWallB1.png", (GC.SCREEN.CENTER.X - 400) + (i * 60), GC.SCREEN.CENTER.Y - 60);
+                this.addBrick("#gameScreen_pinkWallB1.png", (GC.SCREEN.CENTER.X + 400) + (i * 60), GC.SCREEN.CENTER.Y - 60);
             }
+
+            for(var i = 0; i < 3; i++)
+            {
+                for(var j = 0; j < 2; j++)
+                {
+                    this.addBrick("#gameScreen_pinkWallB1.png", (GC.SCREEN.CENTER.X - 88) + (j * 177), GC.SCREEN.CENTER.Y + 112 + (i * 30));
+                }
+            }
+
+            //Special Obj
+            this.m_specialObj = new Glass(4);
+            this.m_specialObj.setScale(1.2, 1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y - 59);
+            for(var i = 0; i < 2; i++)
+            {
+                this.m_specialObj = new Glass(4);
+                this.m_specialObj.setScale(1.2, 1);
+                this.addSpecialObj(GC.SCREEN.CENTER.X, (GC.SCREEN.CENTER.Y + 112) + (i * 30));
+                this.m_specialObj = new PowerUp();
+                this.addSpecialObj((GC.SCREEN.CENTER.X - 170) + (i * 335), GC.SCREEN.CENTER.Y + 132);
+            }
+
+            this.m_specialObj = new Trigger("OpenLeft");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 370, GC.SCREEN.CENTER.Y - 74);
+            this.m_specialObj = new Trigger("OpenMid");
+            this.m_specialObj.setRotation(-90);
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 74, GC.SCREEN.CENTER.Y + 202);
+            this.m_specialObj = new Trigger("OpenRight");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 430, GC.SCREEN.CENTER.Y - 74);
+            this.m_specialObj = new Trigger("OpenMid");
+            this.m_specialObj.setRotation(90);
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 74, GC.SCREEN.CENTER.Y + 202);
+            this.m_specialObj = new MetalDoor("Left");
+            this.m_specialObj.setScale(1.2, 1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 240, GC.SCREEN.CENTER.Y + 135);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Right");
+            this.m_specialObj.setScale(1.2, 1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 240, GC.SCREEN.CENTER.Y + 135);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Mid");
+            this.m_specialObj.setScale(1.2, 1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 88, GC.SCREEN.CENTER.Y + 28);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Mid");
+            this.m_specialObj.setScale(1.2, 1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 88, GC.SCREEN.CENTER.Y + 28);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+
         }
 
 
@@ -844,6 +907,47 @@ var GameplayLayer = cc.Layer.extend({
 
         this.m_isCameraShaking = true;
         this.setPosition(this.x += randX, this.y += randY);
+    },
+
+    //Defines which door will trigger. Sends behaviour to the target.
+    processMetalDoor:function(p_tag)
+    {
+        var tag = p_tag; 
+
+        if(this.m_metalDoorContainer.length > 0)
+        {
+            for(var i = 0; i < this.m_metalDoorContainer.length; i++)
+            {
+                var doorObj = this.m_metalDoorContainer[i];
+
+                if(p_tag != null)
+                {
+                    if(p_tag == "OpenLeft")
+                    {
+                        if(doorObj.m_tag == "Left")
+                        {
+                            doorObj.openDoor();
+                        }
+                    }
+
+                    else if(p_tag == "OpenRight")
+                    {
+                        if(doorObj.m_tag == "Right")
+                        {
+                            doorObj.openDoor();
+                        }
+                    }
+
+                    else if(p_tag == "OpenMid")
+                    {
+                        if(doorObj.m_tag == "Mid")
+                        {
+                            doorObj.openDoor();
+                        }
+                    }
+                }
+            }
+        }
     },
 
     applyDamage:function()
