@@ -20,6 +20,8 @@ var GameplayLayer = cc.Layer.extend({
     m_bricksContainer:[],
     m_metalDoorContainer:[],
     m_specialObj:undefined,
+    m_computedTotalHeartCount:undefined,
+    m_heartIndexPool:undefined,
 
     //FX
     m_heartFX:undefined,
@@ -32,7 +34,8 @@ var GameplayLayer = cc.Layer.extend({
     //State
     m_isStartGame:undefined,
     m_isPlayerDead:undefined,   
-    m_isInvincible:undefined,   
+    m_isInvincible:undefined,
+    m_heartsKillCount:undefined,   
 
     //BatchNodes
     m_gobjBatchNode:undefined,
@@ -83,9 +86,11 @@ var GameplayLayer = cc.Layer.extend({
         this.m_rainbowProj = [];
 
         this.m_cameraShakeTimer = 0;
+        this.m_heartsKillCount = 0;
         this.m_isCameraShaking = false;
 
         this.m_weaponIndexPool = 0;
+        this.m_heartIndexPool = 0;
         this.m_isForceFieldActive = false;
         this.m_isStartGame = false;
         this.m_isPlayerDead = false;
@@ -163,7 +168,7 @@ var GameplayLayer = cc.Layer.extend({
                     //GameOver Debug
                     //this.gameOver();
                     //this.m_player.playInitialAnimation();
-                    for(var i = 0; i < this.m_heartContainer.length; i++)
+                    for(var i = 0; i < this.m_heartIndexPool; i++)
                     {
                         var heartObj = this.m_heartContainer[i];
 
@@ -265,6 +270,37 @@ var GameplayLayer = cc.Layer.extend({
         this.m_gobjBatchNode.addChild(this.m_heart, 4);
         this.m_heartContainer.push(this.m_heart);
     },
+
+    calculateTotalHearts:function(p_xs, p_s, p_m, p_l, p_xl, p_xxl)
+    {
+        var xsVal = 1, sVal = 2, mVal = 6, lVal = 14, xlVal = 30, xxlVal = 62;
+
+        var xsCount = p_xs, sCount = p_s, mCount = p_m, lCount = p_l, xlCount = p_xl, xxlCount = p_xxl;
+        var totalCount = (p_xs + p_s + p_m + p_xl + p_xl + p_xxl);
+        //cc.log(totalCount);
+        return this.m_computedTotalHeartCount = ((xsCount * xsVal) + (sCount * sVal) + (mCount * mVal) + (lCount * lVal) + (xlCount * xlVal) + (xxlCount * xxlVal) + totalCount);
+    },
+
+    moveAllHeartsToPool:function()
+    {
+        for(var i = 0; i < this.m_computedTotalHeartCount; i++)
+        {
+            this.m_heart = new Heart();
+            this.m_gobjBatchNode.addChild(this.m_heart, 4);
+            this.m_heartContainer.push(this.m_heart);
+        }
+        cc.log(this.m_computedTotalHeartCount);
+    },
+
+    getInitialHeartFromPool:function(p_isInitial, p_isLeft, p_size, x, y)
+    {
+        if(this.m_heartIndexPool < this.m_heartContainer.length)
+        {
+            cc.log("PROCESS");
+            this.m_heartContainer[this.m_heartIndexPool].reuse(p_isInitial, p_isLeft, p_size, x, y);
+            this.m_heartIndexPool += 1;
+        }
+    },
     ///
 
     //Initialize your Blocks and Game Objects here..
@@ -278,8 +314,10 @@ var GameplayLayer = cc.Layer.extend({
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_1);
 
             ///Hearts
-            this.addInitialHeart(false, 2, 560, 510);
-            this.addInitialHeart(true, 2, 810, 510);
+            this.calculateTotalHearts(0, 0, 2, 0, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, false, 2, 560, 510);
+            this.getInitialHeartFromPool(true, true, 2, 810, 510);
 
             ///With Custom Collisions
             //Left L Shape
@@ -329,12 +367,14 @@ var GameplayLayer = cc.Layer.extend({
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_2);
 
             ///Hearts
-            this.addInitialHeart(false, 1, 300, 560);
-            this.addInitialHeart(true, 1, GC.SCREEN.SIZE.WIDTH - 300, 560);
-            this.addInitialHeart(true, 1, 650, 430);
-            this.addInitialHeart(false, 1, 720, 430);
-            this.addInitialHeart(true, 1, 510, 430);
-            this.addInitialHeart(false, 1, 850, 430);
+            this.calculateTotalHearts(0, 6, 0, 0, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, false, 1, 300, 560);
+            this.getInitialHeartFromPool(true, true, 1,  GC.SCREEN.SIZE.WIDTH - 300, 560);
+            this.getInitialHeartFromPool(true, true, 1,  650, 430);
+            this.getInitialHeartFromPool(true, false, 1,  720, 430);
+            this.getInitialHeartFromPool(true, true, 1,  510, 430);
+            this.getInitialHeartFromPool(true, false, 1,  850, 430);
 
             ///Static Bricks
             for(var i = 0; i < 2; i++)
@@ -1103,6 +1143,7 @@ var GameplayLayer = cc.Layer.extend({
         this.addChild(levelBackground);
     },
 
+
     addPlayerWeapon:function()
     {
         if(GC.CURRENT_CHARACTER == GC.CHARACTER_NAME.BEAST)
@@ -1184,40 +1225,20 @@ var GameplayLayer = cc.Layer.extend({
 
     },
 
-    multiplyHeart:function(p_size, p_posX, p_posY)
+    multiplyHeart:function(p_size, x, y)
     {
-        var posX = p_posX;
-        var posY = p_posY;
+        var posX = x;
+        var posY = y;
         if(p_size == 1)
         {
-
-            this.m_heart = new Heart(false, p_size);
-            this.m_heart.setPosition(posX, posY);
-            this.m_gobjBatchNode.addChild(this.m_heart, 3);
-            this.m_heartContainer.push(this.m_heart);
-            this.m_heart.startSimulation();
-
-            this.m_heart = new Heart(true, p_size);
-            this.m_heart.setPosition(posX, posY);
-            this.m_gobjBatchNode.addChild(this.m_heart, 3);
-            this.m_heartContainer.push(this.m_heart);
-            this.m_heart.startSimulation();
-            
+            this.getInitialHeartFromPool(false, false, p_size, x, y);
+            this.getInitialHeartFromPool(false, true, p_size, x, y);
         }
 
         else if(p_size == 0)
         {
-            this.m_heart = new Heart(false, p_size);
-            this.m_heart.setPosition(posX, posY);
-            this.m_gobjBatchNode.addChild(this.m_heart, 3);
-            this.m_heartContainer.push(this.m_heart);
-            this.m_heart.startSimulation();
-
-            this.m_heart = new Heart(true, p_size);
-            this.m_heart.setPosition(posX, posY);
-            this.m_gobjBatchNode.addChild(this.m_heart, 3);
-            this.m_heartContainer.push(this.m_heart);
-            this.m_heart.startSimulation();
+            this.getInitialHeartFromPool(false, false, p_size, x, y);
+            this.getInitialHeartFromPool(false, true, p_size, x, y);
         }
     },
 
@@ -1265,7 +1286,6 @@ var GameplayLayer = cc.Layer.extend({
         for(var i = 0; i < this.m_heartContainer.length; i++)
         {
             var heartObj = this.m_heartContainer[i];
-
             heartObj.freeze();
         }
     },
@@ -1324,7 +1344,6 @@ var GameplayLayer = cc.Layer.extend({
         for(var i = 0; i < this.m_heartContainer.length; i++)
         {
             var heartObj = this.m_heartContainer[i];
-
             heartObj.destroy();
         }
 
@@ -1398,6 +1417,16 @@ var GameplayLayer = cc.Layer.extend({
         }
     },
 
+    updateKillCount:function()
+    {
+        this.m_heartsKillCount += 1;
+
+        if(this.m_heartsKillCount >= this.m_computedTotalHeartCount)
+        {
+            this.gameOver();
+        }
+    },
+
     applyDamage:function()
     {
         if(!this.m_isPlayerDead && !this.m_isForceFieldActive && !this.m_isInvincible)
@@ -1460,7 +1489,7 @@ var GameplayLayer = cc.Layer.extend({
     {
        
         /// COLLISION
-
+        //cc.log(this.m_heartIndexPool);
         //Collision Pickup -> Player
         for(var i = 0; i < this.m_pickUpContainer.length; i++)
         {

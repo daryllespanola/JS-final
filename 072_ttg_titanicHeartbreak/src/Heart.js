@@ -1,56 +1,51 @@
 var Heart = cc.Sprite.extend({
 
-	/*
-	m_velocity:undefined,
-	m_acceleration:undefined,
-	m_gravity:undefined,
-	m_computedForce:undefined,
-
-	m_fixedFlightForce:undefined,
-	m_isLaunched:undefined,
-	m_isFalling:undefined,
-
-	m_bisOnce:undefined,
-	*/
 	m_size:undefined,
 	m_mass:undefined,
 	m_velocity:undefined,
-	m_acceleration:undefined,
 	m_gravity:undefined,
-	m_isLeftInit:undefined,
+	m_bIsLeftInit:undefined,
 	act_rotateLoop:undefined,		
 	act_squashV:undefined,
 	act_squashH:undefined,
-	m_isDestroy:undefined,
-	m_isFreeze:undefined,
+	m_bIsDestroy:undefined,
+	m_bisAlive:undefined,
+	m_bIsFreeze:undefined,
 
-	ctor:function(p_isLeftInit, size)
+	ctor:function()
 	{
-		var texture;
-		switch(size)
+		this._super("#gobj_heartS.png");
+		this.moveToPool();
+	},
+
+	init:function(p_isLeftInit, p_size, x, y)
+	{
+		this.setPosition(x, y);
+		//cc.log(this.getPosition());
+		this.m_size = p_size;
+		switch(this.m_size)
 		{
-			case 2: texture = "#gobj_heartM.png";
+			case 5: Tools.changeSprite(this, "gobj_heartXXL.png"); 
 				break;
-			case 1: texture = "#gobj_heartS.png";
+			case 4: Tools.changeSprite(this, "gobj_heartXL.png"); 
 				break;
-			case 0: texture = "#gobj_heartXS.png";
+			case 3: Tools.changeSprite(this, "gobj_heartL.png"); 
+				break;
+			case 2: Tools.changeSprite(this, "gobj_heartM.png"); 
+				break;
+			case 1: Tools.changeSprite(this, "gobj_heartS.png"); 
+				break;
+			case 0: Tools.changeSprite(this, "gobj_heartXS.png"); 
 				break;
 		}
 
-		this._super(texture);
-		this.m_size = size;
-		this.init(p_isLeftInit);
-	},
-
-	init:function(p_isLeftInit)
-	{
+		this.m_bisAlive = true;
 		this.m_isInitialSpawn = false;
-		this.m_isDestroy = false;
 		this.m_isFreeze = false;
-		this.m_isLeftInit = p_isLeftInit;
+		this.m_bIsLeftInit = p_isLeftInit;
 		var dir;
 
-		if(this.m_isLeftInit)
+		if(this.m_bIsLeftInit)
 				dir = -1.69;
 		else  dir = 1.69;
 
@@ -68,7 +63,25 @@ var Heart = cc.Sprite.extend({
 					cc.scaleTo(0.2, 1, 1));
 		this.act_squashH = new cc.sequence(cc.scaleTo(0.1, 0.8, 1),
 					cc.scaleTo(0.2, 1, 1));
+	},
 
+	moveToPool:function()
+	{
+		this.m_bisAlive = false;
+		this.setPosition(999999, 999999);
+		this.setOpacity(0);
+		this.cleanup();
+	},
+
+	reuse:function(p_isInitial, p_isLeftInit, p_size, x, y)
+	{
+		var bIsInitial = p_isInitial;
+
+		this.setOpacity(255);
+		this.init(p_isLeftInit, p_size, x, y);
+
+		if(!bIsInitial)
+			this.startSimulation();
 	},
 
 	startSimulation:function()
@@ -76,14 +89,7 @@ var Heart = cc.Sprite.extend({
 		this.runAction(this.act_rotateLoop);
 		this.scheduleUpdate();
 	},
-
-	//Simulates Newton's second law
-	applyForce:function(p_force)
-	{
-		var f = cc.p(p_force.x / this.m_mass, p_force.y / this.m_mass);
-		this.m_acceleration = cc.pAdd(this.m_acceleration, f);
-	},
-
+	
 	squashScale:function(p_dir)
 	{
 		if(p_dir == "Top" || p_dir == "Bot")
@@ -91,33 +97,6 @@ var Heart = cc.Sprite.extend({
 			this.runAction(this.act_squashV);
 		}
 	},
-
-	/*
-	calculateWallForce:function()
-	{
-		
-		var limit1 = 0;
-		var limit2 = 0;
-
-		if(this.x > GC.SCREEN.SIZE.WIDTH)
-		{
-			limit1 = -1;
-		}
-
-		else if(this.x < 0)
-		{
-			limit1 = 1;
-		}
-
-		if(this.y < 100)
-		{
-			limit2 = 1;
-		}
-
-		return new cc.p(limit1, limit2);
-		
-	},
-	*/
 
 	collideObstacle:function(p_dir)
 	{
@@ -148,12 +127,6 @@ var Heart = cc.Sprite.extend({
 			//cc.log("Hit Right");
 		}
 
-	},
-
-	collideObstacle2:function()
-	{
-		//this.m_velocity.x *= -1;
-		cc.log("DAR");
 	},
 
 	checkEdges:function()
@@ -188,204 +161,72 @@ var Heart = cc.Sprite.extend({
 
 	destroy:function()
 	{
-		if(!this.m_isDestroy)
+		if(!this.m_bIsDestroy && this.m_bisAlive)
 		{
-			this.m_isDestroy = true;
+			g_sharedGameplayLyr.updateKillCount();
+			cc.log(g_sharedGameplayLyr.m_heartsKillCount);
+			this.m_bIsDestroy = true;
+			this.m_bisAlive = false;
 			g_sharedGameplayLyr.spawnHeartFX(this.m_size, this.x , this.y);
 			this.setOpacity(0);
 			this.runAction(cc.sequence(cc.delayTime(0.05),
 				cc.callFunc(function()
 				{
 					g_sharedGameplayLyr.multiplyHeart(this.m_size - 1, this.x, this.y);
-					this.cleanup();
-					this.setOpacity(0);
+					this.moveToPool();
 				}, this)));
 			this.unscheduleUpdate();
-			g_sharedGameplayLyr.m_toDelete.push(this);
 		}
 	},
 
 	freeze:function()
 	{
-		if(this.m_isFreeze) return;
-		this.m_isFreeze = true;
-		this.unscheduleUpdate();
-		this.stopAllActions();
+		if(this.m_bisAlive)
+		{
+			if(this.m_bIsFreeze) return;
+			this.m_bIsFreeze = true;
+			this.unscheduleUpdate();
+			this.stopAllActions();
 
-		this.runAction(cc.sequence(cc.delayTime(2),
-			cc.fadeOut(0.2),
-			cc.fadeIn(0.2),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1),
-			cc.fadeOut(0.1),
-			cc.fadeIn(0.1)));
+			this.runAction(cc.sequence(cc.delayTime(2),
+				cc.fadeOut(0.2),
+				cc.fadeIn(0.2),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1),
+				cc.fadeOut(0.1),
+				cc.fadeIn(0.1)));
 
-		this.runAction(cc.sequence(cc.delayTime(4),
-			cc.callFunc(function()
-			{
-				this.m_isFreeze = false;
-				this.scheduleUpdate();
-				this.runAction(this.act_rotateLoop);
-			}, this)));
+			this.runAction(cc.sequence(cc.delayTime(4),
+				cc.callFunc(function()
+				{
+					this.m_bIsFreeze = false;
+					this.scheduleUpdate();
+					this.runAction(this.act_rotateLoop);
+				}, this)));
+		}
 	},
 
 	update:function()
 	{
-		//var wallForce = this.calculateWallForce();
-		//this.applyForce(wallForce);
-		//cc.log(this.m_velocity.y);
-	
 		this.m_velocity.y = cc.clampf(this.m_velocity.y, -6.5, 6.5);
 
 		this.x += this.m_velocity.x;
 		this.y += this.m_velocity.y;
 		this.m_velocity = cc.pAdd(this.m_velocity, this.m_gravity);
 
-		this.m_acceleration = cc.pMult(this.m_acceleration, 0);
-
-		//var wind = cc.p(0.001, 0);
-		//var gravity = cc.p(0, -0.1);
-		//this.applyForce(wind);
-		//this.applyForce(gravity);
-
 		this.checkEdges();
 		
 	}
-
-
-
-	/*
-	init:function()
-	{
-		this.setPosition(550, 250);	
-		this.setScale(0.3);
-
-		//values
-		this.m_velocity = cc.p(0, 0);
-		this.m_acceleration = cc.p(0, 0);
-		this.m_gravity = cc.p(0, 0);
-		this.m_fixedFlightForce = cc.p(0.2, 1.6);
-		this.m_isLaunched = false;
-		this.m_isFalling = false;
-
-		this.m_bisOnce = false;
-
-		this.runAction(cc.sequence(cc.delayTime(1), 
-			cc.callFunc(function()
-			{
-				this.launch();
-			}, this)));
-
-		this.scheduleUpdate();	
-	},
-
-	applyMovement:function()
-	{
-		this.m_velocity = cc.pAdd(this.m_velocity, this.m_acceleration);
-		this.setPosition(this.x += this.m_velocity.x, this.y += this.m_velocity.y);
-
-		this.m_velocity.x = cc.clampf(this.m_velocity.x, -3, 3);
-		this.m_velocity.y = cc.clampf(this.m_velocity.y, -2, 100);
-	},
-
-	applyForce:function(force)
-	{
-		this.m_computedForce = new cc.p(force.x, force.y);
-		this.m_acceleration = cc.pAdd(this.m_acceleration, this.m_computedForce);
-	},
-
-	launch:function()
-	{
-		this.applyForce(this.m_fixedFlightForce);
-		this.m_isLaunched = true;
-	},
-
-	resetMovement:function()
-	{
-		this.m_velocity = new cc.p(0, 0);
-		this.m_acceleration = new cc.p(0, 0);
-	},
-
-	checkEdges:function()
-	{
-		if(this.m_isLaunched)
-		{
-			if(this.y <= 200)
-			{
-				this.resetMovement();
-				this.m_isLaunched = false;
-				this.runAction(cc.sequence(cc.delayTime(0.05),
-					cc.callFunc(function()
-					{
-						this.launch();
-						this.m_isLaunched = true;
-						this.m_isFalling = false;
-					}, this)));
-
-			}
-
-			else if(this.x >= GC.SCREEN.SIZE.WIDTH - 200 && !this.m_bisOnce)
-			{
-				this.m_bisOnce = true;
-				this.m_velocity.x = this.m_velocity.x * -1;
-				this.m_velocity.y = this.m_velocity.y * -1;
-				//this.m_acceleration.x = this.m_acceleration * -1;
-				this.m_fixedFlightForce = cc.p(0.2 * -1, 1.6);
-				//this.applyForce(this.m_fixedFlightForce);
-				//cc.log("Must turn");
-				this.runAction(cc.sequence(cc.delayTime(0.1),
-					cc.callFunc(function()
-					{
-						this.m_bisOnce = false;
-					}, this)));
-			}
-
-			else if(this.x <= 200 && !this.m_bisOnce)
-			{
-				this.m_bisOnce = true;
-				this.m_velocity.x = this.m_velocity.x * -1;
-				this.m_velocity.y = this.m_velocity.y * -1;
-				//this.m_acceleration.x = this.m_acceleration * -1;
-				this.m_fixedFlightForce = cc.p(0.2 , 1.6);
-				//this.applyForce(this.m_fixedFlightForce);
-				//cc.log("Must turn");
-				this.runAction(cc.sequence(cc.delayTime(0.1),
-					cc.callFunc(function()
-					{
-						this.m_bisOnce = false;
-					}, this)));
-			}
-		}
-	},
-
-	update:function()
-	{
-		this.applyMovement();	
-		this.checkEdges();
-		
-		if(this.m_isLaunched)
-		{
-			this.m_gravity = cc.p(0, -0.1);
-			this.applyForce(this.m_gravity);
-		}
-
-		if(this.m_velocity.y <= -1 && !this.m_isFalling)
-		{
-			this.m_isFalling = true;
-			this.m_acceleration.x = 0;
-		}
-	}
-	*/
 });

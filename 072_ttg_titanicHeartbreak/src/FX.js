@@ -13,6 +13,12 @@ var HeartFX = cc.Sprite.extend({
 		var size = p_size;
 		switch (size)
 		{
+			case 5: this.act_explode = new Tools.createFramesAnimation("gobj_heartXXLBurst_", 0.08, 0, 4);
+				break;
+			case 4: this.act_explode = new Tools.createFramesAnimation("gobj_heartXLBurst_", 0.08, 0, 4);
+				break;
+			case 3: this.act_explode = new Tools.createFramesAnimation("gobj_heartLBurst_", 0.08, 0, 4);
+				break;
 			case 2: this.act_explode = new Tools.createFramesAnimation("gobj_heartMBurst_", 0.08, 0, 4);
 				break;
 			case 1: this.act_explode = new Tools.createFramesAnimation("gobj_heartSBurst_", 0.08, 0, 4);
