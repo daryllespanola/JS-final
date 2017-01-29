@@ -200,9 +200,20 @@ var LevelSelectLayer = cc.Layer.extend({
 		level9.x = -39;
 		level9.y = -70;
 
+		var level10 = new cc.MenuItemImage(
+			"#ui_btn_lvl.png",
+			"#ui_btn_lvl.png",
+			this.startLevel10,
+			this);
+		
+		level10.anchorX = 1;
+		level10.anchorY = 1;
+		level10.x = -167;
+		level10.y = -70;
 
 
-		var levelMenu = new cc.Menu(level1, level2, level3, level4, level5, level6, level7, level8, level9);
+
+		var levelMenu = new cc.Menu(level1, level2, level3, level4, level5, level6, level7, level8, level9, level10);
 		levelMenu.x = GC.SCREEN.CENTER.X;
 		levelMenu.y = GC.SCREEN.CENTER.Y - 100;
 		this.addChild(levelMenu, 5);
@@ -389,9 +400,11 @@ var LevelSelectLayer = cc.Layer.extend({
 		this.showLoadingScreen();
 	},
 
-	goLevel10:function()
+	startLevel10:function()
 	{
-
+		GC.LEVEL = 10;
+		this.processCharacterSelected();
+		this.showLoadingScreen();
 	},
 
 	goLevel11:function()

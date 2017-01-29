@@ -871,6 +871,51 @@ var GameplayLayer = cc.Layer.extend({
             this.addSpecialObj(GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y - 50);
         }
 
+        else if(currentLevel == 10)
+        {
+            levelBackground = new cc.Sprite(res.gameScreen_bg_png_7);
+            
+            //Static Bricks
+            for(var i = 0; i < 2; i++)
+            {
+                for(var j = 0; j < 3; j++)
+                {
+                    this.addBrick("#gameScreen_orangeWall1.png", 250 + (i * 190), GC.SCREEN.CENTER.Y + 230 - (j * 120));
+                    this.addBrick("#gameScreen_orangeWall1.png", (GC.SCREEN.SIZE.WIDTH - 250) - (i * 190), GC.SCREEN.CENTER.Y + 230 - (j * 120));
+                }
+            }
+
+            for(var i = 0; i < 2; i++)
+            {
+                for(var j = 0; j < 2; j++)
+                {
+                    this.addBrick("#gameScreen_orangeWall1.png", 350 + (i * 190), GC.SCREEN.CENTER.Y + 170 - (j * 120));
+                    this.addBrick("#gameScreen_orangeWall1.png", (GC.SCREEN.SIZE.WIDTH - 350) - (i * 190), GC.SCREEN.CENTER.Y + 170 - (j * 120));
+                }
+            }
+
+            for(var i = 0; i < 4; i++)
+            {
+                this.addBrick("#gameScreen_orangeWall1.png", GC.SCREEN.CENTER.X - 48, GC.SCREEN.CENTER.Y + 80 - (i * 30));
+                this.addBrick("#gameScreen_orangeWall1.png", GC.SCREEN.CENTER.X + 48, GC.SCREEN.CENTER.Y + 80 - (i * 30));
+            }
+
+            for(var i = 0; i < 2; i++)
+            {
+                this.addBrick("#gameScreen_lv10w1.png", GC.SCREEN.CENTER.X - 48 + (i * 96), GC.SCREEN.CENTER.Y + 175);
+            }
+
+            //Special Obj
+            for(var i = 0; i < 4; i++)
+            {
+                this.m_specialObj = new Glass(2);
+                this.addSpecialObj(GC.SCREEN.CENTER.X, (GC.SCREEN.CENTER.Y - 9) + (i * 30));
+            }
+
+            this.m_specialObj = new PowerUp();
+            this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 128.5);
+        }
+
 
         levelBackground.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y);
         this.addChild(levelBackground);
