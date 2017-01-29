@@ -276,7 +276,7 @@ var GameplayLayer = cc.Layer.extend({
         var xsVal = 1, sVal = 2, mVal = 6, lVal = 14, xlVal = 30, xxlVal = 62;
 
         var xsCount = p_xs, sCount = p_s, mCount = p_m, lCount = p_l, xlCount = p_xl, xxlCount = p_xxl;
-        var totalCount = (p_xs + p_s + p_m + p_xl + p_xl + p_xxl);
+        var totalCount = (p_s + p_m + p_xl + p_xl + p_xxl);
         //cc.log(totalCount);
         return this.m_computedTotalHeartCount = ((xsCount * xsVal) + (sCount * sVal) + (mCount * mVal) + (lCount * lVal) + (xlCount * xlVal) + (xxlCount * xxlVal) + totalCount);
     },
@@ -412,10 +412,12 @@ var GameplayLayer = cc.Layer.extend({
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_3);
             ///Hearts
-            this.addInitialHeart(true, 1, GC.SCREEN.CENTER.X + 50, 470);
-            this.addInitialHeart(true, 2, GC.SCREEN.CENTER.X + 250, 500);
-            this.addInitialHeart(true, 2, GC.SCREEN.CENTER.X  - 250, 500);
-            this.addInitialHeart(false, 1, GC.SCREEN.CENTER.X - 50, 480);
+            this.calculateTotalHearts(0, 2, 0, 2, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, true, 3, GC.SCREEN.CENTER.X + 250, 500);
+            this.getInitialHeartFromPool(true, true, 3, GC.SCREEN.CENTER.X  - 250, 500);
+            this.getInitialHeartFromPool(true, true, 1, GC.SCREEN.CENTER.X + 50, 470);
+            this.getInitialHeartFromPool(true, false, 1, GC.SCREEN.CENTER.X - 50, 480);
 
             ///With Custom Collisions
             for(var i = 0; i < 2; i++)
@@ -460,6 +462,14 @@ var GameplayLayer = cc.Layer.extend({
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_6);
 
+            //Hearts
+            this.calculateTotalHearts(0, 4, 0, 0, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, true, 1, GC.SCREEN.CENTER.X + 230, 520);
+            this.getInitialHeartFromPool(true, false, 1, GC.SCREEN.CENTER.X  - 230, 520);
+            this.getInitialHeartFromPool(true, false, 1, GC.SCREEN.CENTER.X + 50, 580);
+            this.getInitialHeartFromPool(true, true, 1, GC.SCREEN.CENTER.X - 50, 580);
+
             ///Static Bricks
             for(var i = 0; i < 2; i++)
             {
@@ -503,8 +513,10 @@ var GameplayLayer = cc.Layer.extend({
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_4);
 
             ///Hearts
-            this.addInitialHeart(true, 2, 430, 550);
-            this.addInitialHeart(false, 2, 930, 550);
+            this.calculateTotalHearts(0, 0, 2, 0, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, true, 2, 430, 550);
+            this.getInitialHeartFromPool(true, false, 2, 930, 550);
 
             ///Bulbs
             var bulb = new cc.Sprite("#gobj_lightbulb.png");
@@ -585,6 +597,11 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 6)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_1);
+            //Hearts
+            this.calculateTotalHearts(0, 0, 0, 2, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, false, 3, GC.SCREEN.CENTER.X + 40, GC.SCREEN.CENTER.Y + 100);
+            this.getInitialHeartFromPool(true, true, 3, GC.SCREEN.CENTER.X - 50, GC.SCREEN.CENTER.Y + 30);
 
             ///Custom Collisions
             var leftTop = new cc.Sprite("#gameScreen_lv6w1.png");
@@ -629,6 +646,15 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 7)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_2);
+            //Hearts
+            this.calculateTotalHearts(0, 4, 2, 0, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, false, 1, 250, GC.SCREEN.CENTER.Y + 120);
+            this.getInitialHeartFromPool(true, true, 1, 350, GC.SCREEN.CENTER.Y + 120);
+            this.getInitialHeartFromPool(true, false, 1, 1100, GC.SCREEN.CENTER.Y + 120);
+            this.getInitialHeartFromPool(true, true, 1, 1000, GC.SCREEN.CENTER.Y + 120);
+            this.getInitialHeartFromPool(true, true, 2, GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 250);
+            this.getInitialHeartFromPool(true, false, 2, GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y);
 
             //Custom Collisions
             var leftTop = new cc.Sprite("#gameScreen_lv7w1.png");
@@ -731,7 +757,11 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 8)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_3);
-
+            //Hearts
+            this.calculateTotalHearts(0, 0, 0, 2, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, false, 3, GC.SCREEN.CENTER.X + 300, GC.SCREEN.CENTER.Y + 100);
+            this.getInitialHeartFromPool(true, true, 3, GC.SCREEN.CENTER.X - 300, GC.SCREEN.CENTER.Y + 100);
             //Custom Collision
             var leftTop = new cc.Sprite("#gameScreen_lv8w1.png");
             leftTop.setPosition(300, GC.SCREEN.CENTER.Y + 215);
@@ -832,6 +862,16 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 9)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_5);
+            //Hearts
+            this.calculateTotalHearts(2, 4, 0, 0, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, false, 0, GC.SCREEN.CENTER.X + 30, GC.SCREEN.CENTER.Y + 160);
+            this.getInitialHeartFromPool(true, true, 0, GC.SCREEN.CENTER.X - 30, GC.SCREEN.CENTER.Y + 170);
+
+            this.getInitialHeartFromPool(true, true, 1, 300, GC.SCREEN.CENTER.Y + 120);
+            this.getInitialHeartFromPool(true, false, 1, GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y + 120);
+            this.getInitialHeartFromPool(true, true, 1, GC.SCREEN.CENTER.X - 20, GC.SCREEN.CENTER.Y + 216);
+            this.getInitialHeartFromPool(true, false, 1, GC.SCREEN.CENTER.X + 30, GC.SCREEN.CENTER.Y + 216);
 
             //Custom Collision
             var roofTopLeft = new cc.Sprite("#gameScreen_lv9w1.png");
@@ -915,6 +955,11 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 10)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_7);
+            //Hearts
+            this.calculateTotalHearts(0, 0, 0, 2, 0, 0);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, false, 3, GC.SCREEN.CENTER.X - 200, GC.SCREEN.CENTER.Y + 300);
+            this.getInitialHeartFromPool(true, true, 3, GC.SCREEN.CENTER.X + 200, GC.SCREEN.CENTER.Y + 300);
 
             //Static Bricks
             for(var i = 0; i < 2; i++)
@@ -1120,6 +1165,10 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 12)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_4);
+            //Hearts
+            this.calculateTotalHearts(0, 0, 0, 0, 0, 1);
+            this.moveAllHeartsToPool();
+            this.getInitialHeartFromPool(true, true, 5, GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 80);
 
             for(var i = 0; i < 9; i++)
             {
@@ -1229,13 +1278,7 @@ var GameplayLayer = cc.Layer.extend({
     {
         var posX = x;
         var posY = y;
-        if(p_size == 1)
-        {
-            this.getInitialHeartFromPool(false, false, p_size, x, y);
-            this.getInitialHeartFromPool(false, true, p_size, x, y);
-        }
-
-        else if(p_size == 0)
+        if(p_size <= 5 && p_size >= 0)
         {
             this.getInitialHeartFromPool(false, false, p_size, x, y);
             this.getInitialHeartFromPool(false, true, p_size, x, y);
