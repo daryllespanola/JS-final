@@ -267,6 +267,7 @@ var GameplayLayer = cc.Layer.extend({
     },
     ///
 
+    //Initialize your Blocks and Game Objects here..
     setupLevelDesign:function()
     {
         var currentLevel = GC.LEVEL;
@@ -1061,6 +1062,27 @@ var GameplayLayer = cc.Layer.extend({
             this.m_bricksContainer.push(this.m_specialObj);
         }
 
+        else if(currentLevel == 12)
+        {
+            levelBackground = new cc.Sprite(res.gameScreen_bg_png_4);
+
+            for(var i = 0; i < 9; i++)
+            {
+                this.addBrick("#gameScreen_whiteWall1.png", 150 + (i * 122), GC.SCREEN.CENTER.Y - 90);
+                this.m_specialObj = new Glass(3);
+                this.addSpecialObj(210 + (i * 122), GC.SCREEN.CENTER.Y - 90);
+
+                this.addBrick("#gameScreen_whiteWall1.png", 150 + (i * 122), GC.SCREEN.CENTER.Y + 240);
+                this.m_specialObj = new Glass(3);
+                this.addSpecialObj(210 + (i * 122), GC.SCREEN.CENTER.Y + 240);
+            }
+
+            for(var i = 0; i < 6; i++)
+            {
+                 this.m_specialObj = new PowerUp();
+                this.addSpecialObj(340 + (i * 127), GC.SCREEN.CENTER.Y + 288);
+            }
+        }
 
         levelBackground.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y);
         this.addChild(levelBackground);
