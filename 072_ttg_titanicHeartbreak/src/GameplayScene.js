@@ -687,6 +687,78 @@ var GameplayLayer = cc.Layer.extend({
 
         }
 
+        else if(currentLevel == 8)
+        {
+            levelBackground = new cc.Sprite(res.gameScreen_bg_png_3);
+
+            //Custom Collision
+            var leftTop = new cc.Sprite("#gameScreen_lv8w1.png");
+            leftTop.setPosition(300, GC.SCREEN.CENTER.Y + 215);
+            this.m_brickBatchNode.addChild(leftTop);
+            var leftTop2 = new cc.Sprite("#gameScreen_lv8w3.png");
+            leftTop2.setPosition(GC.SCREEN.CENTER.X - 95, GC.SCREEN.CENTER.Y + 215);
+            this.m_brickBatchNode.addChild(leftTop2);
+            var leftBot = new cc.Sprite("#gameScreen_lv8w5.png");
+            leftBot.setPosition(335, GC.SCREEN.CENTER.Y);
+            this.m_brickBatchNode.addChild(leftBot);
+            var leftBot2 = new cc.Sprite("#gameScreen_lv8w6.png");
+            leftBot2.setPosition(503, GC.SCREEN.CENTER.Y);
+            this.m_brickBatchNode.addChild(leftBot2);
+            var rightTop = new cc.Sprite("#gameScreen_lv8w2.png");
+            rightTop.setPosition(GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y + 215);
+            this.m_brickBatchNode.addChild(rightTop);
+            var rightTop2 = new cc.Sprite("#gameScreen_lv8w4.png");
+            rightTop2.setPosition(GC.SCREEN.CENTER.X + 95, GC.SCREEN.CENTER.Y + 215);
+            this.m_brickBatchNode.addChild(rightTop2);
+            var rightBot = new cc.Sprite("#gameScreen_lv8w6.png");
+            rightBot.setPosition(GC.SCREEN.SIZE.WIDTH - 335, GC.SCREEN.CENTER.Y);
+            this.m_brickBatchNode.addChild(rightBot);
+            var rightBot2 = new cc.Sprite("#gameScreen_lv8w5.png");
+            rightBot2.setPosition(GC.SCREEN.CENTER.X + 180, GC.SCREEN.CENTER.Y);
+            this.m_brickBatchNode.addChild(rightBot2);
+
+            //Static Bricks
+            this.addBrick("#gameScreen_lv8w7.png", GC.SCREEN.CENTER.X + 1, GC.SCREEN.CENTER.Y + 250);
+            this.addBrick("#gameScreen_lv8w7.png", GC.SCREEN.CENTER.X + 159, GC.SCREEN.CENTER.Y + 249);
+            this.addBrick("#gameScreen_lv8w7.png", GC.SCREEN.CENTER.X - 159, GC.SCREEN.CENTER.Y + 249);
+
+            //Special Obj
+            this.m_specialObj = new MetalDoor("Right");
+            this.m_specialObj.setScale(1, 1.1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 112, GC.SCREEN.CENTER.Y + 105);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Right");
+            this.m_specialObj.setScale(1, 1.1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(267, GC.SCREEN.CENTER.Y + 105);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Right");
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 261, GC.SCREEN.CENTER.Y + 249);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+
+            this.m_specialObj = new MetalDoor("Left");
+            this.m_specialObj.setScale(1, 1.1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.SIZE.WIDTH - 268, GC.SCREEN.CENTER.Y + 105);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Left");
+            this.m_specialObj.setScale(1, 1.1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 112, GC.SCREEN.CENTER.Y + 105);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Left");
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 261, GC.SCREEN.CENTER.Y + 249);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+
+            this.m_specialObj = new Trigger("OpenRight");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 47, GC.SCREEN.CENTER.Y + 235);
+            this.m_specialObj = new Trigger("OpenLeft");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 48, GC.SCREEN.CENTER.Y + 235);
+        }
+
 
         levelBackground.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y);
         this.addChild(levelBackground);
