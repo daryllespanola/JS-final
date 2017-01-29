@@ -455,6 +455,23 @@ var Trigger = cc.Sprite.extend({
 			cc.log("Open Mid Door");
 			g_sharedGameplayLyr.processMetalDoor("OpenMid");
 		}
+
+		else if(this.m_currentFunc == "OpenMidLeft" && !this.m_bisOn)
+		{
+			this.m_bisOn = true;
+			Tools.changeSprite(this, "gobj_trigger_1.png");
+			cc.log("Open Mid left Door");
+			g_sharedGameplayLyr.processMetalDoor("OpenMidLeft");
+		}
+
+		else if(this.m_currentFunc == "OpenMidRight" && !this.m_bisOn)
+		{
+			this.m_bisOn = true;
+			Tools.changeSprite(this, "gobj_trigger_1.png");
+			cc.log("Open Mid right Door");
+			g_sharedGameplayLyr.processMetalDoor("OpenMidRight");
+		}
+
 	},
 
 	collideRect:function(x, y)

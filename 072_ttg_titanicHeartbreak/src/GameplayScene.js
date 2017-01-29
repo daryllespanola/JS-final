@@ -788,6 +788,78 @@ var GameplayLayer = cc.Layer.extend({
             }
         }
 
+        else if(currentLevel == 9)
+        {
+            levelBackground = new cc.Sprite(res.gameScreen_bg_png_5);
+
+            //Custom Collision
+            var roofTopLeft = new cc.Sprite("#gameScreen_lv9w1.png");
+            roofTopLeft.setPosition(300, GC.SCREEN.CENTER.Y + 180);
+            this.m_brickBatchNode.addChild(roofTopLeft);
+            var roofTopRight = new cc.Sprite("#gameScreen_lv9w1.png");
+            roofTopRight.setPosition(GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y + 180);
+            this.m_brickBatchNode.addChild(roofTopRight);
+            var roofTopMidLeft = new cc.Sprite("#gameScreen_lv9w2.png");
+            roofTopMidLeft.setPosition(510, GC.SCREEN.CENTER.Y + 212);
+            this.m_brickBatchNode.addChild(roofTopMidLeft);
+            var roofTopMidRight = new cc.Sprite("#gameScreen_lv9w3.png");
+            roofTopMidRight.setPosition(858.5, GC.SCREEN.CENTER.Y + 212);
+            this.m_brickBatchNode.addChild(roofTopMidRight);
+
+            //Static Bricks
+            this.addBrick("#gameScreen_lv9w4.png", GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 276);
+            this.addBrick("#gameScreen_lv9w5.png", 525, GC.SCREEN.CENTER.Y - 41.5);
+            this.addBrick("#gameScreen_lv9w5.png", 842.5, GC.SCREEN.CENTER.Y - 41.5);
+            for(var i = 0; i < 2; i++)
+            {
+                this.addBrick("#gameScreen_lv9w7.png", 220 + (i * 160), GC.SCREEN.CENTER.Y + 85);
+                this.addBrick("#gameScreen_lv9w7.png", (GC.SCREEN.SIZE.WIDTH - 220) - (i * 160), GC.SCREEN.CENTER.Y + 85);
+                this.addBrick("#gameScreen_lv9w6.png", 446.5 + (i * 155), GC.SCREEN.CENTER.Y + 36);
+                this.addBrick("#gameScreen_lv9w6.png", 767 + (i * 155), GC.SCREEN.CENTER.Y + 36);
+            }
+
+            //Special Obj
+            this.m_specialObj = new MetalDoor("MidLeft");
+            this.m_specialObj.setScale(1.1, 1.1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 82, GC.SCREEN.CENTER.Y + 198);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("MidRight");
+            this.m_specialObj.setScale(1.1, 1.1);
+            this.m_specialObj.setRotation(90);
+            this.addSpecialObj(767, GC.SCREEN.CENTER.Y + 198);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Mid");
+            this.m_specialObj.setScale(1.1, 1);
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 1.5, GC.SCREEN.CENTER.Y + 116);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+
+            this.m_specialObj = new MetalDoor("Right");
+            this.addSpecialObj(300, GC.SCREEN.CENTER.Y + 54);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+            this.m_specialObj = new MetalDoor("Right");
+            this.addSpecialObj(GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y + 54);
+            this.m_metalDoorContainer.push(this.m_specialObj);
+
+            this.m_specialObj = new Trigger("OpenMidLeft");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(478, GC.SCREEN.CENTER.Y - 56);
+            this.m_specialObj = new Trigger("OpenMid");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(570, GC.SCREEN.CENTER.Y - 56);
+            this.m_specialObj = new Trigger("OpenMidRight");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(798, GC.SCREEN.CENTER.Y - 56);
+            this.m_specialObj = new Trigger("OpenRight");
+            this.m_specialObj.setScale(-1);
+            this.addSpecialObj(890, GC.SCREEN.CENTER.Y - 56);
+
+            this.m_specialObj = new PowerUp();
+            this.addSpecialObj(300, GC.SCREEN.CENTER.Y - 50);
+            this.m_specialObj = new PowerUp();
+            this.addSpecialObj(GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y - 50);
+        }
+
 
         levelBackground.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y);
         this.addChild(levelBackground);
@@ -1063,6 +1135,22 @@ var GameplayLayer = cc.Layer.extend({
                     else if(p_tag == "OpenMid")
                     {
                         if(doorObj.m_tag == "Mid")
+                        {
+                            doorObj.openDoor();
+                        }
+                    }
+
+                    else if(p_tag == "OpenMidLeft")
+                    {
+                        if(doorObj.m_tag == "MidLeft")
+                        {
+                            doorObj.openDoor();
+                        }
+                    }
+
+                    else if(p_tag == "OpenMidRight")
+                    {
+                        if(doorObj.m_tag == "MidRight")
                         {
                             doorObj.openDoor();
                         }
