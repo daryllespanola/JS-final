@@ -717,6 +717,23 @@ var GameplayLayer = cc.Layer.extend({
             rightBot2.setPosition(GC.SCREEN.CENTER.X + 180, GC.SCREEN.CENTER.Y);
             this.m_brickBatchNode.addChild(rightBot2);
 
+            this.addCustomCollision("#collider_lv8_w1_horz.png", 300, GC.SCREEN.CENTER.Y + 250);
+            this.addCustomCollision("#collider_lv8_w1_vert.png", 268, GC.SCREEN.CENTER.Y + 200);
+            this.addCustomCollision("#collider_lv8_w1_horz.png", GC.SCREEN.SIZE.WIDTH - 300, GC.SCREEN.CENTER.Y + 250);
+            this.addCustomCollision("#collider_lv8_w1_vert.png", GC.SCREEN.SIZE.WIDTH - 268, GC.SCREEN.CENTER.Y + 200);
+            this.addCustomCollision("#collider_lv8_w5_horz.png", 335, GC.SCREEN.CENTER.Y - 32);
+            this.addCustomCollision("#collider_lv8_w5_horz.png", 503, GC.SCREEN.CENTER.Y - 32);
+            this.addCustomCollision("#collider_lv8_w5_horz.png", GC.SCREEN.CENTER.X + 180, GC.SCREEN.CENTER.Y - 32);
+            this.addCustomCollision("#collider_lv8_w5_horz.png", GC.SCREEN.SIZE.WIDTH - 335, GC.SCREEN.CENTER.Y - 32);
+            this.addCustomCollision("#collider_lv8_w5_vert.png", 267.5, GC.SCREEN.CENTER.Y + 15);
+            this.addCustomCollision("#collider_lv8_w5_vert.png", 570, GC.SCREEN.CENTER.Y + 15);
+            this.addCustomCollision("#collider_lv8_w5_vert.png", 795, GC.SCREEN.CENTER.Y + 15);
+            this.addCustomCollision("#collider_lv8_w5_vert.png", GC.SCREEN.SIZE.WIDTH - 268, GC.SCREEN.CENTER.Y + 15);
+            this.addCustomCollision("#collider_lv8_w3_horz.png", GC.SCREEN.CENTER.X - 95, GC.SCREEN.CENTER.Y + 250);
+            this.addCustomCollision("#collider_lv8_w1_vert.png", GC.SCREEN.CENTER.X - 110, GC.SCREEN.CENTER.Y + 200);
+            this.addCustomCollision("#collider_lv8_w3_horz.png", GC.SCREEN.CENTER.X + 95, GC.SCREEN.CENTER.Y + 250);
+            this.addCustomCollision("#collider_lv8_w1_vert.png", GC.SCREEN.CENTER.X + 110, GC.SCREEN.CENTER.Y + 200);
+
             //Static Bricks
             this.addBrick("#gameScreen_lv8w7.png", GC.SCREEN.CENTER.X + 1, GC.SCREEN.CENTER.Y + 250);
             this.addBrick("#gameScreen_lv8w7.png", GC.SCREEN.CENTER.X + 159, GC.SCREEN.CENTER.Y + 249);
