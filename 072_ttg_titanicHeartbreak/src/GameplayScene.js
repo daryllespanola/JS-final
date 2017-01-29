@@ -965,7 +965,100 @@ var GameplayLayer = cc.Layer.extend({
 
         else if(currentLevel == 11)
         {
-            levelBackground = new cc.Sprite(res.gameScreen_bg_png_5);
+            levelBackground = new cc.Sprite(res.gameScreen_bg_png_7);
+
+            //Custom Collision
+            var roofTopLeft = new cc.Sprite("#gameScreen_lv11w1.png");
+            roofTopLeft.setPosition(450, GC.SCREEN.CENTER.Y + 220);
+            this.m_brickBatchNode.addChild(roofTopLeft);
+            var roofBotLeft = new cc.Sprite("#gameScreen_lv11w3.png");
+            roofBotLeft.setPosition(450, GC.SCREEN.CENTER.Y - 34);
+            this.m_brickBatchNode.addChild(roofBotLeft);
+
+            var roofTopRight = new cc.Sprite("#gameScreen_lv11w2.png");
+            roofTopRight.setPosition(GC.SCREEN.SIZE.WIDTH - 450, GC.SCREEN.CENTER.Y + 220);
+            this.m_brickBatchNode.addChild(roofTopRight);
+            var roofBotRight = new cc.Sprite("#gameScreen_lv11w4.png");
+            roofBotRight.setPosition(GC.SCREEN.SIZE.WIDTH - 450, GC.SCREEN.CENTER.Y - 34);
+            this.m_brickBatchNode.addChild(roofBotRight);
+
+            //Static Bricks
+            this.addBrick("#gameScreen_lv11w5.png", GC.SCREEN.CENTER.X - 136, GC.SCREEN.CENTER.Y + 92);
+            this.addBrick("#gameScreen_lv11w5.png", GC.SCREEN.CENTER.X + 136, GC.SCREEN.CENTER.Y + 92);
+            this.addBrick("#gameScreen_lv11w6.png", 360, GC.SCREEN.CENTER.Y + 92);
+            this.addBrick("#gameScreen_lv11w6.png", GC.SCREEN.SIZE.WIDTH - 360, GC.SCREEN.CENTER.Y + 92);
+
+            for(var i = 0; i < 2; i++)
+            {
+                this.addBrick("#gameScreen_orangeWall1.png", (GC.SCREEN.CENTER.X - 50) + (i * 100), GC.SCREEN.CENTER.Y - 35);
+            }
+
+            //Special Obj
+            this.m_specialObj = new CeilingFan(8);
+            this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 250);
+            var cable3 = new cc.Sprite("#gobj_cable.png");
+            cable3.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.SIZE.HEIGHT + 55);
+            this.m_gobjBatchNode.addChild(cable3);
+
+            this.m_specialObj = new PowerUp();
+            this.addSpecialObj(GC.SCREEN.CENTER.X - 155, GC.SCREEN.CENTER.Y - 81);
+            this.m_specialObj = new PowerUp();
+            this.addSpecialObj(GC.SCREEN.CENTER.X + 155, GC.SCREEN.CENTER.Y - 81);
+            this.m_specialObj = new Glass(1);
+            this.addSpecialObj(360, GC.SCREEN.CENTER.Y + 92);
+            this.m_specialObj = new Glass(1);
+            this.addSpecialObj(GC.SCREEN.SIZE.WIDTH - 360, GC.SCREEN.CENTER.Y + 92);
+
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition(260, GC.SCREEN.CENTER.Y + 80);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition(260, GC.SCREEN.CENTER.Y + 268);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition(260, GC.SCREEN.CENTER.Y + 80);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition((GC.SCREEN.SIZE.WIDTH - 260), GC.SCREEN.CENTER.Y + 80);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition((GC.SCREEN.SIZE.WIDTH - 260), GC.SCREEN.CENTER.Y + 268);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition((GC.SCREEN.SIZE.WIDTH - 260), GC.SCREEN.CENTER.Y + 80);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition((GC.SCREEN.SIZE.WIDTH - 260), GC.SCREEN.CENTER.Y + 80);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition((GC.SCREEN.SIZE.WIDTH - 260), GC.SCREEN.CENTER.Y + 268);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition((GC.SCREEN.SIZE.WIDTH - 260), GC.SCREEN.CENTER.Y + 80);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition(GC.SCREEN.CENTER.X + 153, GC.SCREEN.CENTER.Y + 269);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition(GC.SCREEN.CENTER.X + 153, GC.SCREEN.CENTER.Y + 457);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition(GC.SCREEN.CENTER.X + 153, GC.SCREEN.CENTER.Y + 269);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition(GC.SCREEN.CENTER.X - 153, GC.SCREEN.CENTER.Y + 269);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition(GC.SCREEN.CENTER.X - 153, GC.SCREEN.CENTER.Y + 457);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition(GC.SCREEN.CENTER.X - 153, GC.SCREEN.CENTER.Y + 269);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
         }
 
 
@@ -1473,7 +1566,7 @@ var GameplayLayer = cc.Layer.extend({
         }
 
         // Collision (Rainbow -> Player) "Exclusive for some levels"
-        if(GC.LEVEL == 4 || GC.LEVEL == 10)
+        if(GC.LEVEL == 4 || GC.LEVEL == 10 || GC.LEVEL == 11)
         {
             if(this.m_rainbowProj.length > 0)
             {
