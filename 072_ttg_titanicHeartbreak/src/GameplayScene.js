@@ -874,7 +874,7 @@ var GameplayLayer = cc.Layer.extend({
         else if(currentLevel == 10)
         {
             levelBackground = new cc.Sprite(res.gameScreen_bg_png_7);
-            
+
             //Static Bricks
             for(var i = 0; i < 2; i++)
             {
@@ -914,6 +914,53 @@ var GameplayLayer = cc.Layer.extend({
 
             this.m_specialObj = new PowerUp();
             this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 128.5);
+
+            this.m_specialObj = new CeilingFan(8);
+            this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 300);
+            var cable3 = new cc.Sprite("#gobj_cable.png");
+            cable3.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.SIZE.HEIGHT + 105);
+            this.m_gobjBatchNode.addChild(cable3);
+
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition(300, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition(300, GC.SCREEN.CENTER.Y + 298);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition(300, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition(500, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition(500, GC.SCREEN.CENTER.Y + 298);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition(500, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition(870, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition(870, GC.SCREEN.CENTER.Y + 298);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition(870, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
+            var bulb = new cc.Sprite("#gobj_lightbulb.png");
+            bulb.setPosition(1050, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(bulb);
+            var cable = new cc.Sprite("#gobj_cable.png");
+            cable.setPosition(1050, GC.SCREEN.CENTER.Y + 298);
+            this.m_gobjBatchNode.addChild(cable);
+            this.m_specialObj = new SmileyBulb();
+            this.m_specialObj.setPosition(1050, GC.SCREEN.CENTER.Y + 110);
+            this.m_gobjBatchNode.addChild(this.m_specialObj, 4);
+            this.m_bricksContainer.push(this.m_specialObj);
         }
 
 
@@ -1421,7 +1468,7 @@ var GameplayLayer = cc.Layer.extend({
         }
 
         // Collision (Rainbow -> Player) "Exclusive for some levels"
-        if(GC.LEVEL == 4)
+        if(GC.LEVEL == 4 || GC.LEVEL == 10)
         {
             if(this.m_rainbowProj.length > 0)
             {
