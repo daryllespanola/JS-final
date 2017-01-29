@@ -558,6 +558,14 @@ var GameplayLayer = cc.Layer.extend({
             var rightBot = new cc.Sprite("#gameScreen_lv6w4.png");
             rightBot.setPosition(GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y- 48);
             this.m_brickBatchNode.addChild(rightBot);
+            this.addCustomCollision("#collider_lv6_w1_horz.png", GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y + 195);
+            this.addCustomCollision("#collider_lv6_w1_vert.png", GC.SCREEN.CENTER.X - 145, GC.SCREEN.CENTER.Y + 147);
+            this.addCustomCollision("#collider_lv6_w1_horz.png", GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y + 195);
+            this.addCustomCollision("#collider_lv6_w1_vert.png", GC.SCREEN.CENTER.X + 145, GC.SCREEN.CENTER.Y + 147);
+            this.addCustomCollision("#collider_lv6_w1_horz.png", GC.SCREEN.CENTER.X - 113, GC.SCREEN.CENTER.Y - 79.5);
+            this.addCustomCollision("#collider_lv6_w1_vert.png", GC.SCREEN.CENTER.X - 145, GC.SCREEN.CENTER.Y - 32);
+            this.addCustomCollision("#collider_lv6_w1_horz.png", GC.SCREEN.CENTER.X + 113, GC.SCREEN.CENTER.Y - 79.5);
+            this.addCustomCollision("#collider_lv6_w1_vert.png", GC.SCREEN.CENTER.X + 145, GC.SCREEN.CENTER.Y - 32);
 
             ///Static Bricks
             for (var i = 0; i < 2; i++)
