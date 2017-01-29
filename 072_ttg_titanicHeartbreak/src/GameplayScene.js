@@ -963,6 +963,11 @@ var GameplayLayer = cc.Layer.extend({
             this.m_bricksContainer.push(this.m_specialObj);
         }
 
+        else if(currentLevel == 11)
+        {
+            levelBackground = new cc.Sprite(res.gameScreen_bg_png_5);
+        }
+
 
         levelBackground.setPosition(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y);
         this.addChild(levelBackground);
