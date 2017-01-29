@@ -757,6 +757,18 @@ var GameplayLayer = cc.Layer.extend({
             this.m_specialObj = new Trigger("OpenLeft");
             this.m_specialObj.setScale(-1);
             this.addSpecialObj(GC.SCREEN.CENTER.X + 48, GC.SCREEN.CENTER.Y + 235);
+
+            this.m_specialObj = new PowerUp();
+            this.addSpecialObj(GC.SCREEN.CENTER.X, GC.SCREEN.CENTER.Y + 110);
+
+            for(var i = 0; i < 2; i++)
+            {
+                for(var j = 0; j < 2; j++)
+                {
+                    this.m_specialObj = new Glass(3);
+                    this.addSpecialObj(638 + (i * 93), (GC.SCREEN.CENTER.Y - 5) - (j * 30));
+                }
+            }
         }
 
 
